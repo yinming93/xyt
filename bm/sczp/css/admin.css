@@ -1,0 +1,159 @@
+*{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+h3{
+    color:blue;
+}
+#top li{
+    float:left;
+    margin:20px 0px 0 30px;
+
+}
+    #top li a{
+        text-decoration: none;
+        color: blue;
+    }
+    #lll ul li a:hover{
+        color:orange;
+    }
+
+.admin_table{
+    width:1200px;
+    border:1px #abcdef dashed;
+    border-collapse:collapse;
+    margin:0 100px;
+    
+}
+
+.admin_table1{
+    width:1024px;
+}
+
+.admin_table tr {
+    height:35px;
+}
+
+.admin_table td {
+    border:1px #abcdef dashed;
+}
+
+.table_header{
+    text-align:center;
+    background:#abcdef;
+}
+.table_content{
+    text-align: center;
+}
+.table_content:hover {
+    background:pink;
+}
+#hy{
+    text-align: center;
+    color: #FF679A;
+    font: 23px bold;
+
+}
+
+#bj{
+    width: 1366px;
+    height: 633px;
+    background-image: url(../imgs1/login_bg_m1.jpg);
+    position: absolute;
+}
+#tou{
+    width: 1360px;
+    height: 90px;
+    /*background: yellow;*/
+}
+#mc{
+    color: #FF6396;
+    font-size: 28px;
+    text-align: center;
+    margin-top: -40px;
+}/*名称*/
+#zi{
+    color: #FF6396;
+}/*字*/
+#dlk{
+    width: 500px;
+    height: 150px;
+    /*background: green;*/
+    margin: 100px 550px;
+}/*登录框*/
+#anniu{
+    background: pink;
+    color: white;
+    border:1;
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+}/*按钮*/
+#xieyzm{
+    width: 30px;
+    height: 20px;
+    border: 0px;
+}/*写验证码*/
+#c{
+    width: 150px;
+    height: 220px;
+    margin: 30px;
+}
+#c ul li a{
+    text-decoration: none;
+    color: #FF6396;
+}
+#c a:hover{
+    color: green;
+}
+.cc{
+    font-size: 20px;
+    color: blue;
+}
+/*menu菜单样式*/
+#yh{
+    width: 1161px;
+    color:#3CA0FF;
+    height:506px;
+    background-image: url(../imgs1/login_bg_m1.jpg);
+}
+#sousuo{
+    width: 300px;
+    height: 100px;
+
+    margin-left: 100px;
+}/*搜索框样式*/
+#ss{
+    width: 60px;
+    height: 20px;
+    background: #FF6396;
+    color: white;
+    border: 0;
+}/*提交按钮样式*/
+.num_links{
+    color: blue;
+    margin-left: 100px;
+}
+#fy{
+    text-decoration: none;
+    color: blue;
+}/*分页样式*/
+#hy{
+    width: 1366px;
+    height: 125px;
+    border-bottom:2px solid #FF6599;
+    background-image: url(../imgs1/20150107110725.jpg);
+}
+#lll{
+    font-size: 14px;
+    margin-top: 50px;
+}/*欢迎头的样式*/
+#gl{
+    width: 203px;
+    height: 506px;
+    position: absolute;
+    border-right:2px solid #FF6599;
+    background-image: url(../imgs1/login_bg_m1.jpg);
+}
