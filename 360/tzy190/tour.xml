@@ -1,0 +1,302 @@
+<krpano version="1.16" title="天之运·190平" onstart="startup();">
+
+	<include url="skin/vtourskin.xml" />
+	
+	<include url="actions.xml"/>
+
+	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+	<skin_settings bingmaps="false"
+	               bingmaps_key=""
+	               bingmaps_zoombuttons="false"
+	               gyro="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="true"
+	               thumbs_text="true"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               tooltips_thumbs="true"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               controlbar_offset="20"
+	               />
+
+
+   <layer name="skin_logo"  x="0" y="0" align="righttop" url="soufunLogo.png" scale="1"  ox="-150" oy="5" onclick="openurl('http://gz.soufun.com/',_blank);" />
+
+
+	<!-- set optional skin logo url -->
+	<style name="spot"  zorder="2" url="hs1.swf" alturl="mappoint.png" scale="1.2"  alpha="0.8" align="lefttop"
+	        edge="center" onhover="showtext(点击浏览,SKIN_TOOLTIPS);tween(alpha,1);tween(scale,1.5);addhotspotthumb(get(name));"    
+    onout="tween(alpha,0.8);tween(scale,1.2);removehotspotthumb();" onclick="loadscenehotspot(get(name));"  />
+	
+	<style name="skin_thumbtext_style" url="%SWFPATH%/plugins/textfield.swf" align="bottom" width="100%" autoheight="true" y="0" enabled="false" background="true" backgroundcolor="0x000000" backgroundalpha="0.5" border="false" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:20px;" textshadow="1" />
+	
+	<autorotate enabled="true"
+                waittime="3.0" 
+                speed="4.0" 
+                horizon="0.0" 
+                tofov="110" 
+            />
+					
+	<!-- set optional skin logo url -->
+	
+	
+    <layer name="map_container" keep="false"  align="lefttop" url="boxbg.png" x="0" y="5" ox="0" oy="0"  width="25%" height="prop"  bgcolor=  
+"0x000000" bgalpha="0.5" maskchildren="false" bgcapture="true" scalechildren="True"  onhover="tween(alpha,1);"  onout=
+"tween(alpha,0.9);" effect="dropshadow(1,45,0x000000,8,0.3);" 
+    >
+	
+	 
+		
+	<layer name="map_show" url="2.png" alpha="0.7" align="righttop" state="opened"  x="-22" y="5" onhover="showtext('隐藏户型图',SKIN_TOOLTIPS)"   
+bgcapture="true" onclick=    
+"if(layer[map_show].state=='opened',tween(layer[map_container].x,-25%,0.5,easeOutElastic);set(layer[map_show].url,1.png);set(layer[map_show].onhover,showtext('显示户型图',SKIN_TOOLTIPS));set(layer[map_show].state,closed),tween(layer[map_container].x,0,0.5,easeOutElastic);set(layer[map_show].onhover,showtext('隐藏户型图',SKIN_TOOLTIPS));set(layer[map_show].url,2.png);set(layer[map_show].state,opened);)" 
+    />
+	
+	<layer name="map_ou" zorder="1" url="scale_2.png" alpha="1" scale="0.6" align="rightbottom" x="4" y="25" onhover="if(layer[map].scale == 1,showtext('已放大至最大比例',SKIN_TOOLTIPS),showtext('放大户型图',SKIN_TOOLTIPS));"  ondown= "if(layer[map].scale>=1,set(layer[map_ou].alpha,0.5),add(layer[map].scale,0.1);set(layer[map_ou].alpha,1);set(layer[map_in].alpha,1);set(layer[map].scale,get(layer[map].scale)));" 
+	/>
+
+    <layer name="map_in" zorder="2" url="scale_1.png" alpha="1" scale="0.6" align="rightbottom" x="4" y="2" onhover="if(layer[map].scale LT 0.4,showtext('已缩小至最小比例',SKIN_TOOLTIPS),showtext('缩小户型图',SKIN_TOOLTIPS));" ondown="if(layer[map].scale&lt;0.4,set(layer[map_in].alpha,0.5),sub(layer[map].scale,0.1);set(layer[map_ou].alpha,1);set(layer[map_in].alpha,1););" 
+	/>
+	
+
+
+	 <layer name="map_container_mask" type="container" x="0" y="0" ox="5" oy="5" width="95%" height="95%" bgcolor="0xFFFFFF" bgalpha="0" maskchildren="true" bgcapture="true" scalechildren="True">	
+	
+	  <layer name="scrollarea" url="%SWFPATH%/plugins/scrollarea.swf" alturl="%SWFPATH%/plugins/scrollarea.js"  align="center"  width="350" height="600" direction="all" scalechildren="True">
+		
+	   <layer name="map" align="center" scalechildren="True" children="True" >
+	
+         
+			  <layer name="map_1" visible="false" type="container"  zorder="3"  width="500" height="500" bgcolor="0xFFFFFF" bgalpha="0" >	
+			  
+			   
+			  
+			  
+		 			
+	 <!-- 修改雷达热点的XY值 -->				
+			   	<layer name="spot0" style="spot" x="160"  y="210" />
+	
+				<layer name="spot1" style="spot" x="175"  y="290" />
+	
+
+		
+	        
+	     </layer> 
+		 	
+       <layer    name="radar" 
+	             url="%SWFPATH%/plugins/radar.swf" 
+	             alturl="%SWFPATH%/plugins/radar.js" 
+				 visible="false" 
+				 dragable="false"
+				 zorder="1" 
+	             align="lefttop"
+	             edge="center"
+		         scale="0.85" 
+				 onover="set(layer[scrollarea].draggable,false);"
+				 onout="set(layer[scrollarea].draggable,true);"		 
+	             linecolor="0"
+	             fillcolor="0xff7f00"
+				 fillalpha="0.8"
+	             editmode="true" 
+				 invert="false"
+				 />	 
+				 			
+			    </layer>
+			</layer>
+		</layer>
+	</layer>
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+
+<!-- 			<scene name="scene_wsj" title="卫生间" onstart=
+	"activatespot(30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/wsj.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/wsj.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/wsj.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/wsj.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+
+
+	</scene> -->
+	<scene name="scene_rh" title="客厅" onstart="activatespot(200.08);activemap(map_1,map.png,0.8);creatcombobox(get(scene[get(xml.scene)].index),0);select_box_item(get(scene[get(xml.scene)].name));floorvisible();" thumburl="panos/rh.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/rh.tiles/preview.jpg" />
+
+		<image>
+			<!-- <cube url="panos/rh.tiles/pano_%s.jpg" /> -->
+			<mobile>
+				<cube url="panos/rh.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+
+	
+
+	
+	
+	
+
+	<!--<scene name="scene_1fsf" title="书房" onstart=
+	"activatespot(30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/1fsf.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1fsf.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/1fsf.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/1fsf.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!--
+	<scene name="scene_kt" title="客厅" onstart="activatespot(-30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/kt.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/kt.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/kt.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/kt.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>
+	-->
+	
+		<scene name="scene_zw" title="主卧" onstart=
+	"activatespot(-30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/zw.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/zw.tiles/preview.jpg" />
+
+		<image>
+		<!-- 	<cube url="panos/zw.tiles/pano_%s.jpg" /> -->
+			<mobile>
+				<cube url="panos/zw.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>
+	
+	<scene name="scene_et" title="次卧" onstart=
+	"activatespot(-30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/et.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/et.tiles/preview.jpg" />
+
+		<image>
+			<!-- <cube url="panos/et.tiles/pano_%s.jpg" /> -->
+			<mobile>
+				<cube url="panos/et.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>
+
+	<scene name="scene_ct" title="客房" onstart=
+	"activatespot(30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/ct.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/ct.tiles/preview.jpg" />
+
+		<image>
+			<!-- <cube url="panos/ct.tiles/pano_%s.jpg" /> -->
+			<mobile>
+				<cube url="panos/ct.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>
+
+	<!--
+		<scene name="scene_cw" title="次卧" onstart=
+	"activatespot(-30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/cw.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cw.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cw.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/cw.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>
+	-->
+	
+	
+	
+	
+	<!--
+		<scene name="scene_2fkt" title="家庭室" onstart=
+	"activatespot(-30.38);select_box_item(get(scene[get(xml.scene)].name));" thumburl="panos/2fkt.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2fkt.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/2fkt.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/2fkt.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		
+
+	</scene>-->
+
+
+
+</krpano>
