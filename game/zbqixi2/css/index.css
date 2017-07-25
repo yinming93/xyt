@@ -1,0 +1,290 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-size: 10px;
+}
+body {
+	font-family: "microsoft yahei";
+}
+img {
+	display: block;
+}
+.ani {
+	position: absolute;
+}
+
+.p{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+}
+.yinyue{
+	display: none;
+	width: 0;
+	height: 0;
+}
+.loading{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 999;
+}
+#index{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: none;
+}
+.mu{
+	position: absolute;
+	width: 6%;
+	top: 6%;
+	left: 85%;
+	height: auto;
+	z-index: 999;
+}
+.loadImg{
+	position: absolute;
+	width: 47%;
+	top: 32%;
+	left: 24.5%;
+	height: auto;
+}
+.loadText{
+	position: absolute;
+	font-size: 2.5rem;
+	top: 62%;
+	left: 40%;
+}
+.pageOne-1{
+	position: absolute;
+	width: 84.5%;
+	top: 9%;
+	left: 7.75%;
+	height: auto;
+}
+.pageOne-2{
+	position: absolute;
+	width: 38%;
+	top: 53%;
+	left: 16.5%;
+	height: auto;
+}
+.pageOne-3{
+	position: absolute;
+	width: 38%;
+	top: 66.5%;
+	left: 16.5%;
+	height: auto;
+}
+.pageOne-4{
+	position: absolute;
+	width: 19%;
+	top: 49%;
+	left: 68%;
+	height: auto;
+}
+.pageOne-5{
+	position: absolute;
+	width: 27%;
+	top: 63%;
+	left: 65%;
+	height: auto;
+}
+.pageTwo-1{
+	position: absolute;
+	width: 84.5%;
+	top: 9%;
+	left: 7.75%;
+	height: auto;
+}
+.pageTwo-2{
+	position: absolute;
+	width: 56%;
+	top: 44%;
+	left: 12%;
+	height: auto;
+}
+.pageTwo-3{
+	position: absolute;
+	width: 49%;
+	top: 56.8%;
+	left: 12.5%;
+	height: auto;
+}
+.pageTwo-22{
+	position: absolute;
+	width: 56%;
+	top: 44%;
+	left: 12%;
+	height: auto;
+}
+.pageTwo-33{
+	position: absolute;
+	width: 49%;
+	top: 56.8%;
+	left: 12.5%;
+	height: auto;
+}
+.nameone{
+	position: absolute;
+	width: 40%;
+	min-height: 5%;
+	text-align: center;
+	top: 68%;
+	left: 42%;
+	height: auto;
+	border: 0;
+	background: inherit;
+	font-size: 2.5rem;
+}
+.pageTwo-44{
+	position: absolute;
+	width: 60%;
+	height: auto;
+	top: 71%;
+	left: 20%;
+}
+.pageThree-44{
+	position: absolute;
+	width: 60%;
+	height: auto;
+	top: 71%;
+	left: 20%;
+}
+.submit{
+	position: absolute;
+	width: 24%;
+	top: 79%;
+	left: 38%;
+	height: auto;
+}
+.pageThree-1{
+	position: absolute;
+	width: 84.5%;
+	top: 9%;
+	left: 7.75%;
+	height: auto;
+}
+.pageThree-2{
+	position: absolute;
+	width: 50%;
+	top: 44.7%;
+	left: 15.5%;
+	height: auto;
+}
+.pageThree-3{
+	position: absolute;
+	width: 49%;
+	top: 56.8%;
+	left: 16%;
+	height: auto;
+}
+.pageThree-22{
+	position: absolute;
+	width: 50%;
+	top: 44.7%;
+	left: 15.5%;
+	height: auto;
+}
+.pageThree-33{
+	position: absolute;
+	width: 49%;
+	top: 56.8%;
+	left: 16%;
+	height: auto;
+}
+.nametwo{
+	position: absolute;
+	width: 40%;
+	min-height: 5%;
+	text-align: center;
+	top: 68%;
+	left: 42%;
+	height: auto;
+	border: 0;
+	background: inherit;
+	font-size: 2.5rem;
+}
+.namethree{
+	position: absolute;
+	width: 60%;
+	min-height: 2.%;
+	text-align: center;
+	top: 80.7%;
+	left: 14.5%;
+	border: 0;
+	padding-left:40px ;
+	background: url(../img/4-4.png) no-repeat left top;
+	background-size: 100% 100%;
+	font-size: 2.5rem;
+}
+.result{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: none;
+}
+.result-1{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+.result-2{
+	position: absolute;
+	margin: 0 auto;
+	text-align: center;
+	left: 38.5%;
+	bottom: 2.5%;
+	color: white;
+	font-size:1.4rem ;
+}
+
+.music{
+	display: none;
+	height: 0%;
+}
+.wz{
+    position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0%;
+	bottom: 0%;
+	text-align: center;
+	font-size: 0.8rem;
+	color: white;
+	z-index: 999;
+}
+.array{
+	position: absolute;
+	width:6%;
+	height:auto;
+	bottom:2%; 
+	left:47%;
+	z-index: 999;
+	-webkit-animation: start 1.5s infinite alternate;
+	animation: start 1.5s infinite alternate;
+}
+@-webkit-keyframes start {
+	0%{opacity: 0.8;-webkit-transform: translate(0px,10px);}
+	100% {opacity: 1;-webkit-transform: translate(0px,-10px);}
+}
+@keyframes start {
+	0%{opacity: 0.8;transform: translate(0px,10px);}
+	100% {opacity: 1;transform: translate(0px,-10px);}
+}

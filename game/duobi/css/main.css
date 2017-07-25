@@ -1,0 +1,144 @@
+@charset "UTF-8";
+html,body{font-size: 20px;}
+div,img,p,span,a,ul,li,input{margin: 0;padding: 0;border: none;}
+
+.UnreadMessage{display: inline-block;margin-left: 5px;background-color: red;color: white;height: 16px;line-height: 16px;min-width: 16px;text-align: center;padding: 0 5px;box-sizing: border-box;-webkit-box-sizing: border-box;border-radius: 8px;}
+.UnreadMessage_head{display: none;color: #ff4303;background: white;font-size: 12px;position: absolute;left: 25px;top: 9px;height: 16px;line-height: 16px;min-width: 16px;border-radius: 8px;padding: 0 5px;box-sizing: border-box;-webkit-box-sizing: border-box;font-weight: normal;}
+#orientationchangeImg, #notSupportedImg {
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0px;
+top: 0px;
+display: none;
+}
+#result-share{bottom: 3%;}
+body,html{width:100%;height:100%;padding:0;margin:0;}#game248-splash{position:fixed;top:0;left:0;width:100%;height:100%;display:table;background:#fff;z-index:10000}.splash-wrap{display:table-cell;vertical-align:middle;text-align:center}.txt{height:5%;color:#595757;font-family: "微软雅黑";display: table-row;text-align: center;font-size: 1rem;}.splash-wrap img{width:150px;-webkit-animation:bounceInDown 2s linear;-webkit-animation-fill-mode:forwards;margin-top:-70px;-webkit-animation-play-state:paused;)} 			  
+@-webkit-keyframes bounceInDown {  from, 60%, 75%, 90%, 100% {    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);  }  0% {       -webkit-transform: translateY(-800px);   transform: translateY(-800px);  }  60% {       -webkit-transform: translateY(25px);   transform: translateY(25px);  }  75% {       -webkit-transform: translateY(-10px);   transform: translateY(-10px);  }  90% {       -webkit-transform: translateY(5px);   transform: translateY(5px);  }  100% {    -webkit-transform: none;    transform: none;  }
+}
+/* iconfont */
+@font-face {font-family: 'iconfont';src: url('iconfont.ttf') format('truetype');}
+.iconfont{ font-family:"iconfont" !important; font-size:16px;font-style:normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale;}
+@-webkit-keyframes roting {
+	0% { -webkit-transform:rotateZ(0);}
+	100% { -webkit-transform:rotateZ(360deg) ;}
+}
+
+
+.Refresh-tip{
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border-top: 1px solid #e8e8e8;
+	border: 0;
+	background: #fff;
+	text-align: center;
+	font-size: 12px;
+	display: none;
+}
+.Refresh-tip img{
+	display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 4px;
+}
+
+#result-share{
+	position: absolute;
+    width: 100%;
+    text-align: center;
+    display:none;
+}
+#result-share img{
+	width: 70%;
+	-webkit-animation: bounce 1s 1s infinite ease;
+}
+@-webkit-keyframes bounce {
+	from, 20%, 53%, 80%, 100% {
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		-webkit-transform: translate3d(0,0,0);
+	}
+	40%, 43% {
+		animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		-webkit-transform: translate3d(0, -20px, 0);
+	}
+	70% {
+		animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		-webkit-transform: translate3d(0, -10px, 0);
+	}
+	90% {
+		-webkit-transform: translate3d(0,-4px,0);
+	}
+}
+
+.upper-left{top: 10px;left: 10px;}
+.upper-right{top: 10px;right: 10px;}
+
+.red-dot{
+	display: none;
+    background-color: #ff3f3e;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+	margin-bottom: -14px;
+	position: absolute;
+	left: 2rem;
+	top: 0.2rem;
+}
+
+.letter-red-dot::after{
+    width: 20px;
+    height: 20px;
+    background:#ff3f3e;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: -20px;
+    float: right;
+    content: "1";
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+}
+.letter-red-dot-2::after{
+    width: 20px;
+    height: 20px;
+    background:#ff3f3e;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: -20px;
+    float: right;
+    content: "2";
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.shake-toggle{
+	-webkit-animation: shake 1s;
+}
+
+@-webkit-keyframes shake {
+	0% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0)
+	}
+	10%,30%,50%,70%,90% {
+		-webkit-transform: translateX(-5px);
+		transform: translateX(-5px)
+	}
+	20%,40%,60%,80% {
+		-webkit-transform: translateX(5px);
+		transform: translateX(5px)
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0)
+	}	
+}
+
+#game248-splash .txt{
+	font-size: 16px !important;
+}
