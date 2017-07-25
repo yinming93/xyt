@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>情人节给TA玩回大的</title>
+		<link rel="stylesheet" type="text/css" href="./css/lover.css">
+		<script src="./js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+	        document.getElementById("viewport").content='width=640,user-scalable=no';
+	    </script>
+	    
+	    <!--分享相关 start-->
+	    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	    <script src="./js/wx.js"></script>
+	    <script src="./js/share.js"></script>
+	    <script>
+        	//先定义分享参数对象,全参数为（可按需配置 ）：
+		    var options = {
+		        'id': 'valentine',
+		        'title': '情人节给TA玩回大的',
+		        'desc': '情人节领房本',
+		        'link': "2017/360/valentine/index.html",
+		        'imgUrl': "2017/360/valentine/img/ningdezheng.jpg",
+		
+		        //        'type':'分享类型,music、video或link，不填默认为link',
+		        //        'dataUrl':' 如果type是music或video，则要提供数据链接，默认为空',
+		        //  'success':function(){
+		        //        alert('分享成功回调');
+		        //   },
+		        //        'cancel':function(){
+		        //            alert('分享取消回调');
+		        //        },
+		        //        'trigger':function(){
+		        //            alert('调起微信菜单');
+		        //        },
+		        //        'fail':function(){
+		        //            alert('调用失败回调');
+		        //        }
+		    };
+		    //后定义实例(注：实例名不能为关键字和'wx')：
+		    var _wx_share = new WxShare(options);
+		    //如要在中途重置分享信息，调用setOptions方法：
+		    //    _wx_share.setOptions({
+		    //        'title':'修改后的分享标题'
+		    //    });
+		    //如要在中途重置分享给朋友，调用setAppMessageOptions方法：
+		    //    _wx_share.setAppMessageOptions({
+		    //        'title':'修改后分享给朋友的分享标题'
+		    //    });
+		    //如要在中途重置分享到朋友圈，调用setTimeLineOptions方法：
+		    _wx_share.setTimeLineOptions({
+		        'title': '情人节给TA玩回大的'
+		    });
+		    //如要在中途重置qq分享，调用setAppMessageOptions方法：
+		    //    _wx_share.setAppMessageOptions({
+		    //        'title':'修改后qq分享的分享标题'
+		    //    });
+		    //如要在中途重置微博分享，调用setWeiboOptions方法：
+		    //    _wx_share.setWeiboOptions({
+		    //        'title':'修改后微博分享的分享标题'
+		    //    });
+					
+	    </script>
+	    <!--分享相关 start-->
+	    <!--百度统计/360biaoqing/电话-->
+	   
+
+	</head>
+	<body>
+		<div id="lover_one">
+			<div class="home_top"><img src="./img/home_top.png" /></div>
+			<input type="text" class="myName" maxlength="5" />
+			<input type="text" class="myName2" maxlength="5" />
+			<div class="home_btn"></div>
+			<div class="home_rwm"><img src="./img/home_rwm.png" /> </div>
+			<div class="home_ts"></div>
+			
+		</div>
+		<div id="lover_two">
+			<div class="end_top"></div>
+			<div class="thisImg_bg">
+				<div class="bg_bg"></div>
+				<img class="thisImg" src="" />
+				<img class="newthisImg" src="" />
+			</div>
+	
+			<div class="font_d"><img id="font_d" src="./img/end_ts_ts.png" /></div>
+			
+			<div class="end_rwm"><img src="./img/end_rwm.png" /> </div>
+			<div class="end_ren"></div>
+			<div class="end_jt"></div>
+			<div class="end_ts"></div>
+			<div class="two_btn_bg"></div>
+			<div class="two_btn">再买一套</div>
+		</div>
+		
+		
+		
+		
+		<script src="./js/lover.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
+

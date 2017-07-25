@@ -1,0 +1,82 @@
+
+.pagerotate {-webkit-animation:cornl 1s linear;-moz-animation:cornl  1s  linear;-o-transform:cornl  1s  linear ;animation:cornl  1s  linear;}
+
+@-webkit-keyframes cornl {
+	100%{opacity:1;-webkit-transform:rotateY(0deg)}
+	50%{opacity:0;-webkit-transform:rotateY(90deg)}
+    0%{opacity:1;-webkit-transform:rotateY(0deg)}
+}
+
+@-moz-keyframes cornl{
+	100%{opacity:1;-moz-transform:rotateY(0deg)}
+	50%{opacity:0;-moz-transform:rotateY(90deg)}
+    0%{opacity:1;-moz-transform:rotateY(0deg)}
+}
+@-o-keyframes cornl{
+	100%{opacity:1;-o-transform:rotateY(0deg)}
+	50%{opacity:0;-o-transform:rotateY(90deg)}
+    0%{opacity:1;-o-transform:rotateY(0deg)}
+}
+@keyframes cornl{
+	100%{opacity:1;transform:rotateY(0deg)}
+	50%{opacity:0;transform:rotateY(90deg)}
+    0%{opacity:1;transform:rotateY(0deg)}
+}
+
+.xkd img:nth-child(1){
+	opacity:0.5;
+	-webkit-animation:kd1 5s infinite ;animation:kd1  5s infinite;
+}
+.xkd img:nth-child(2){
+	opacity:0.5;
+	-webkit-animation:kd2 5s infinite ;animation:kd2  5s infinite;
+
+}
+.xkd img:nth-child(3){
+	opacity:0.5;
+	-webkit-animation:kd3 5s infinite ;animation:kd3  5s infinite;
+
+}
+
+@-webkit-keyframes kd1 {
+	100%{-webkit-transform:translate(520px,163px) rotate(130deg)}
+	50%{-webkit-transform:translate(501px,205px) rotate(130deg)}
+    0%{-webkit-transform:translate(520px,163px) rotate(130deg)}
+}
+
+@keyframes kd1{
+	100%{transform:translate(520px,163px) rotate(130deg)}
+	50%{transform: translate(501px,205px) rotate(130deg)}
+    0%{transform: translate(520px,163px) rotate(130deg)}
+}
+
+@-webkit-keyframes kd2 {
+	 100%{-webkit-transform: translate(42px,231px) rotate(48deg)}
+	50%{-webkit-transform: translate(70px,257px) rotate(48deg)}
+    0%{-webkit-transform: translate(42px,231px) rotate(48deg)}
+}
+
+@keyframes kd2{
+	100%{transform: translate(42px,231px) rotate(48deg)}
+	50%{transform: translate(70px,257px) rotate(48deg)}
+    0%{transform:translate(42px,231px) rotate(48deg)}
+}
+
+@-webkit-keyframes kd3{
+	100%{transform:translate(50px,823px) rotate(-44deg)}
+	50%{transform:translate(69px,807px) rotate(-44deg)}
+    0%{-webkit-transform:translate(50px,823px) rotate(-44deg)}
+}
+
+@keyframes kd3{
+	100%{transform:translate(50px,823px) rotate(-44deg)}
+	50%{transform:translate(69px,807px) rotate(-44deg)}
+    0%{transform:translate(50px,823px) rotate(-44deg)}
+}
+
+
+/* all */
+::-webkit-input-placeholder { color:#fff; font: 32px/62px '黑体';}
+::-moz-placeholder { color:#fff; } /* firefox 19+ */
+:-ms-input-placeholder { color:#fff; } /* ie */
+input:-moz-placeholder { color:#fff; }

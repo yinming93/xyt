@@ -1,0 +1,373 @@
+@charset "utf-8";
+
+
+body{ margin:0; padding:0 }
+img{ border:0 }
+
+
+/* ------------------------------------------------------------------  */
+
+
+/*   index.php    */
+#startRecord{
+	margin: 0 auto;
+	width: 126px;
+	height: 100px;
+	position: absolute;
+	top: 39%; 
+	
+	left: 45%;
+	margin-left:-50px;
+	
+	/* border: 1px solid #272822; */   
+	/* border-radius: 50px; */
+	/* z-index:99; */
+	/* line-height: 36px; */
+	
+	text-align:center; 	/* 文字等内容居中 */
+	vertical-align:middle;
+	
+	z-index: 99;
+	
+}
+
+#stopRecord{
+	margin: 0 auto;
+	width: 98%;
+	height: 150px;
+	position: absolute;
+	top: 40%; 
+	
+	left:0;
+	/* margin-left:-48px; */
+	
+	/* border: 1px solid white; */   /* 头像边框 */
+	/* border-radius: 50px; */
+	/* z-index:99; */
+	/* line-height: 36px; */
+	
+	text-align:center; 	/* 文字等内容居中 */
+	vertical-align:middle;
+	
+	z-index: 9999;
+	
+}
+
+#chang2{
+	
+	margin: 0 auto;
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	top: 85%; 
+	
+	left: 62%;
+	margin-left:-50px;
+	
+	/* border: 1px solid #272822;   */
+	/* border-radius: 50px; */
+	/* z-index:99; */
+	/* line-height: 36px; */
+	
+	text-align:center; 	/* 文字等内容居中 */
+	vertical-align:middle;
+	
+	z-index: 100;
+	
+}
+
+
+#playVoice1{
+	margin: 0 auto;
+	
+	height: 36px;
+	position: absolute;
+	top: 75%;
+	width:120px;
+	left: 50%;
+	margin-left: -60px;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	background-color: white;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+}
+#geci{
+	margin: 0 auto;
+	
+	height: 36px;
+	position: absolute;
+	top: 72%;
+	width:120px;
+	left: 50%;
+	margin-left: -60px;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	background-color: white;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+}
+#stopVoice1{
+	margin: 0 auto;
+	width:120px;
+	left: 50%;
+	margin-left: -60px;
+	height: 36px;
+	position: absolute;
+	top: 83%;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	background-color: white;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+}
+
+
+
+/* ================================================================================= */
+
+
+/*   share.php    */
+
+#playVoice,#stopVoice{
+	margin: 0 auto;
+	width: 96px;
+	height: 96px;
+	position: absolute;
+	top: 47%; 
+	
+	left:50%;
+	margin-left:-48px;
+	
+	/* border: 1px solid #272822; */  /* 头像边框 */
+	/* border-radius: 50px; */
+	/* z-index:99; */
+	/* line-height: 36px; */
+	
+	text-align:center; 	/* 文字等内容居中 */
+	vertical-align:middle;
+	
+	
+	
+}
+
+#playVoice> #img1{
+	width:25%;
+	position: absolute;
+	top:65%;
+	left:56%;
+	margin-top:-26px;
+	margin-left:-14px;
+	border-radius: 1px; 
+	z-index:99;
+}
+
+#stopVoice>#img2{
+	width:22%;
+	position: absolute;
+	top:65%;
+	left:55%;
+	margin-top:-26px;
+	margin-left:-15px;
+	
+	border-radius: 1px; 
+	z-index:99;
+}
+
+#playVoice > img{
+	width:100%;
+	border-radius: 40px;
+}
+
+#stopVoice > img{
+	width:100%;
+	border-radius: 40px;
+}
+
+
+
+
+
+/*
+#stopVoice{
+	width:60%;
+	height:40px;
+	position:absolute;
+	top:85%;
+	border:1px solid white;
+	
+}
+*/
+
+#actPraise{
+	margin: 0 auto;
+	width:150px;
+	left: 50%;
+	margin-left: -75px;
+	
+	height: 36px;
+	position: absolute;
+	top: 70%;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+	background-color: white;
+}
+
+button{
+	color: #272822;
+	font-size: 16px;
+}
+
+#myVoice{
+	margin: 0 auto;
+	width:120px;
+	left: 50%;
+	margin-left: -60px;
+	height: 36px;
+	position: absolute;
+	top: 80%;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+	background-color: white;
+	color: #272822;
+}
+
+#viewPraise{
+	margin: 0 auto;
+	width:150px;
+	left: 50%;
+	margin-left: -75px;
+	height: 36px;
+	position: absolute;
+	top: 90%;
+	border: 1px solid #272822;
+	border-radius: 12px;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 36px;
+	
+	background-color: white;
+}
+
+
+
+/*    显示列表  start   */
+#praiseList{
+	display: none;
+	
+	z-index: 999;
+	width:99%;
+	height: 100%;
+	position: absolute; 
+	/* top: 0%;  */
+	/* background-color: white;  */
+	text-align:center; 	/* 文字等内容居中 */
+	/* line-height: 36px; */
+	overflow:hidden;
+}
+
+/* 关闭按钮 */
+#praiseClose{
+	display: block;
+	
+	z-index: 9999;
+	width:100%;
+	height: 50px;
+	float:left;
+	background-color: gray;
+	color: #272822;
+	text-align:center; 	/* 文字等内容居中 */
+	line-height: 50px;
+}
+
+
+#showList{
+	display: block;
+	
+	z-index: 9999;
+	width:100%;
+	height: 120%;
+	float:left;
+	background-color: white;
+	color: #272822;
+	text-align:center; 	/* 文字等内容居中 */
+}
+
+/*    显示列表 end     */
+
+
+#showList > img{
+	width:10%;
+	border-radius: 20px;
+}
+
+
+
+/* 旋转 */
+.xuanzhuan{
+		-webkit-animation:zhuan 2.0s;
+		-webkit-animation-iteration-count:infinite;
+		-webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes zhuan{
+	from{-webkit-transform:rotateZ(0deg);}
+	to{-webkit-transform:rotateZ(360deg);}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
