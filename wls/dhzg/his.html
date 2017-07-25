@@ -1,0 +1,990 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+	<meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <title>查看历史消息</title>
+	<link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/msg_historical200056.css" media="all">
+
+	<script src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/jquery-1.8.3.min176ed4.js"></script>
+  <script src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/wxm-core176ed4.js"></script>
+	<script type="text/javascript">
+
+  var monthList = [
+      '1月',
+      '2月',
+      '3月',
+      '4月',
+      '5月',
+      '6月',
+      '7月',
+      '8月',
+      '9月',
+      '10月',
+      '11月',
+      '12月'
+    ];
+  function tranNum2Month(num){    
+    return monthList[num];
+  }
+  function tranDate2LocaleDateString(t){
+    return t.getFullYear() == (new Date).getFullYear() 
+      ? "" +  (t.getMonth() + 1) + "月" +  t.getDate()        + "日"
+      : t.toLocaleDateString();
+  }
+
+	function on_finish_play(){
+		jQuery(".cur").removeClass("cur");
+	}
+	var min_msg_id = 0xffffffff;
+	var TEXT = 1, IMG = 3, VOICE = 34, APPMSG = 49;
+    var is_continue = 1;
+
+    function hide_div(){
+        jQuery("#show_normal_img").animate({opacity:"hide"}, "slow");
+    }
+
+    function show_img(url){
+        url=url.replace("small", "normal");
+        jQuery('#show_normal_img').remove();
+        
+        var img = new Image();
+        img.src = url;
+
+        function _get_img_location( img ){
+            var img_h = img.height, img_w = img.width, screen_h = document.documentElement.clientHeight, screen_w = document.documentElement.clientWidth, img_top, img_left;
+            
+            if( img_h > screen_h || img_w > screen_w )
+            {
+                if( img_h / screen_h > img_w / screen_w ) 
+                {
+                    img_w = screen_h / img_h * img_w;
+                    img_h = screen_h;
+                }
+                else
+                {
+                    img_h = screen_w / img_w * img_h;
+                    img_w = screen_w;
+                }
+            }
+
+            img_top = ( screen_h - img_h ) / 2;
+            img_left = ( screen_w - img_w ) / 2;         
+            return { img_top: img_top, img_left: img_left };
+        };
+
+        img.onload = function(){
+            //console.log(["img_h, w, screen_h, w", img_h, img_w, screen_h, screen_w].join(" "));
+            var position = _get_img_location( img );
+            jQuery('<div id="show_normal_img"><img id="normal_img" style="top:' + position['img_top'] + 'px;left:' + position['img_left'] + 'px; position: absolute;" src="' + url + '" /></div>').click(function(){
+                hide_div();
+            }).appendTo('body');
+            
+            jQuery("#show_normal_img").animate({opacity:"show"}, "slow");
+        };
+        jQuery(window).resize(function(){
+            var position = _get_img_location( img );
+            //jQuery("#normal_img").attr("style", 'top:' + position['img_top'] + 'px;left:' + position['img_left'] + 'px; position: absolute;');
+            jQuery("#normal_img").css('top', position['img_top'] + 'px');
+            jQuery("#normal_img").css('left', position['img_left'] + 'px');
+            
+        });
+    };
+
+	jQuery(document).ready(function(){
+
+    function handle_voice_length(){
+      jQuery(".msg_item.voice").each(function(){
+        var length = parseInt( jQuery(this).attr("length") ) / 1000 / 60 * 150,
+          padding = "10px " + (length > 150 ? 150 : length).toString() + "px 10px 8px";
+        jQuery(this).css("padding", padding );
+      })
+    }
+
+    if( window.navigator.userAgent.indexOf('Mac') == -1 )
+    {
+      //console.log('not ios');
+      jQuery(".msg_item.voice").each(function(){
+        jQuery(this).parents(".msg_list").remove();
+      });
+    }
+
+		function init()
+		{
+			jQuery(".msg_item.img").unbind("click").click(function(){
+				show_img( jQuery(this).eq(0).find("img").attr("src") );
+			});
+
+      /*
+			jQuery(".msg_item.news").unbind("click").click(function(){
+				window.location.href = jQuery(this).attr("link");
+			});
+
+			jQuery(".msg_item.multi_news").each( function(){
+				jQuery(this).find(".msg_cover").unbind("click").click(function(){
+					window.location.href = jQuery(this).attr("link");
+				});
+			});
+
+			jQuery(".sub_msg_item").unbind("click").click(function(){
+				window.location.href = jQuery(this).attr("link");
+			});
+      */
+
+      jQuery(".msg_text").each(function(){
+        jQuery(this).html( replaceEmoji(jQuery(this).html()) );
+        
+      });
+
+			jQuery(".msg_item.voice").each(function(){
+				var t = parseInt( jQuery(this).attr("length") );
+        var sec = Math.ceil(t/1000);
+        /*
+        var  min = Math.floor( sec / 60 );
+				sec = Math.floor( sec % 60 );
+				str_time = min == 0 ? sec + "\"" : min + "\'"	+ sec + "\"";
+        */
+        var str_time = sec + "\"";
+				jQuery(this).find(".msg_desc").eq(0).text(str_time);
+			});
+
+			jQuery(".msg_item.voice").unbind("click").click(function(){
+				
+				var voice = jQuery(this).find('audio').get(0);
+
+        if( !jQuery(this).hasClass("cur") )
+        {
+          if( jQuery(".cur").length )
+          {
+            try{
+              jQuery(".cur").each( function() {
+                jQuery(this).removeClass("cur");
+                var playing_voice = jQuery(this).find('audio').get(0);
+                playing_voice.src = playing_voice.src;
+                playing_voice.currentTime = 0;
+              })
+            }
+            catch(e){
+            }
+          }
+          jQuery(this).addClass("cur");
+          voice.play();
+        }
+				else
+				{
+          try{
+              jQuery(this).removeClass("cur"); 
+              var playing_voice = jQuery(this).find('audio').get(0);
+              playing_voice.src = playing_voice.src;
+              playing_voice.currentTime = 0;
+          }
+          catch(e){
+          }
+
+      }
+
+			});
+			
+			jQuery(".msg_date").each(function(){
+				if( jQuery(this).text() == "" )
+				{
+					var t = new Date( parseInt( jQuery(this).attr("time") ) * 1000 ),
+            str_time = tranDate2LocaleDateString(t);
+					jQuery(this).text( str_time );
+				}
+			});
+			
+			function handle_time(){
+				var date_obj = {};
+				jQuery(".msg_list_date").each( function(){
+					var date = new Date( parseInt( jQuery(this).attr("time") * 1000 ) );
+					var day = '' + date.getFullYear() + date.getMonth() + date.getDate();
+					if( day in date_obj )
+					{
+					}
+					else
+					{
+						date_obj[day] = [];
+						add_date( jQuery(this), date );
+					}
+				});
+
+			};
+
+      handle_voice_length();
+			handle_time();
+		};
+
+		init();
+		
+		function format_int( number, length ){
+			var str_int = number.toString();
+			for( var i = number.toString().length; i < length; ++i )
+			{
+				str_int = '0' + str_int;	
+			}
+			return str_int;
+		}
+
+		function is_need_scroll(){
+      if(is_continue)
+      {
+        return jQuery(document).scrollTop() + jQuery(window).height() > (jQuery(document).height() - 50);
+      }
+      else
+      {
+        return false;
+      }
+		}
+		
+				
+
+		function get_min_msg_id(){
+			jQuery("div[msgid]").each(function(){
+				var tmp_id = parseInt( jQuery(this).attr("msgid") );
+				if( min_msg_id > tmp_id )
+				{
+					min_msg_id = tmp_id;
+				}
+			})
+		}
+
+		jQuery(window).unbind("scroll").bind("scroll",function() {
+			if( 1 == 1 )
+			{
+				if( is_need_scroll() )
+				{
+					get_min_msg_id();
+					//console.log( min_msg_id );
+          var loading_div = '<div class="loading_wrapper" id="loading"><span class="loadingIcon"></span></div>';
+          if( !jQuery("#loading").length && !jQuery("#no_more").length )
+          {
+            jQuery(loading_div).appendTo("body");
+          } 
+					var url = "/mp/getmasssendmsg" ;
+
+					jQuery.ajax({
+						type: "GET",
+						url: url,
+						data: "__biz=MzA3NjMzOTcxMw==&uin=NDIwMTQzNjc1&key=21902f4c7cc723c8a1459651082ede24f9bba34971d4e85046f2516f9cbf7d24c6b0fad7dc5fe218cd07b5f91cab2cd3&frommsgid=" + min_msg_id + "&count = 10&f=json",
+						dataType: 'json',
+						success: function( json_data ){
+							if( json_data['ret'] == 0 )
+							{
+								var msg_list = json_data['general_msg_list']['list']
+								for( var i = 0; i < msg_list.length; ++i )
+								{
+									var msg = msg_list[i];
+                  if(jQuery('[msgid=' + msg.comm_msg_info.id + ']').length != 0 )
+                  {
+                      break;
+                  }
+									switch( msg['comm_msg_info']['type'] )
+									{
+										case TEXT:
+
+											var div = '\
+											<div class="msg_list">\
+												<div class="msg_list_hd">\
+													<h3 class="msg_list_date" time="' + msg.comm_msg_info.datetime + '"></h3>\
+												</div>\
+												<div class="msg_list_bd">\
+													<div class="msg_wrapper" msgid="'+ msg.comm_msg_info.id + '">\
+                            <p class="msg_date" time="' + msg.comm_msg_info.datetime + '"></p>\
+                            <div class="text_box msg_inner_wrapper primary_box">\
+                              <div class="msg_item text">\
+																<p class="msg_text">' + htmlEncode(msg.comm_msg_info.content) + '</p>\
+															</div>\
+															<span class="box_arrow"></span>\
+														</div>\
+													</div>\
+												</div>\
+											</div> ';
+											jQuery(div).appendTo('.msg_page');
+											break;
+										case IMG:
+											var div = '\
+											<div class="msg_list">\
+												<div class="msg_list_hd">\
+													<h3 class="msg_list_date" time="' + msg.comm_msg_info.datetime + '"></h3>\
+												</div>\
+												<div class="msg_list_bd">\
+													<div id="WXVOICE'+ msg.comm_msg_info.id + '" class="msg_wrapper" msgid="'+ msg.comm_msg_info.id + '">\
+                            <p class="msg_date" time="' + msg.comm_msg_info.datetime + '"></p>\
+                            <a href="javascript:;" class="msg_inner_wrapper primary_box">\
+                              <div class="msg_item img">\
+																<span class="msg_img">\
+																	<img src="/mp/getmediadata?__biz=' + json_data.bizuin_code + '&type=img&mode=small&msgid=' + msg.comm_msg_info.id + '&uin=' + json_data.uin_code + '&key=' + json_data.key + '" alt="">\
+																</span>\
+															</div>\
+															<span class="box_arrow"></span>\
+														</a>\
+													</div>\
+												</div>\
+											</div>';
+											jQuery(div).appendTo('.msg_page');
+											break;
+										case VOICE:
+                      if( window.navigator.userAgent.indexOf('Mac') != -1 )
+                      {
+											var div = '\
+											<div class="msg_list">\
+												<div class="msg_list_hd">\
+													<h3 class="msg_list_date" time="' + msg.comm_msg_info.datetime + '"></h3>\
+												</div>\
+												<div class="msg_list_bd">\
+													<div id="WXVOICE'+ msg.comm_msg_info.id + '" class="msg_wrapper" msgid="'+ msg.comm_msg_info.id + '">\
+                            <p class="msg_date" time="' + msg.comm_msg_info.datetime + '"></p>\
+														<a href="javascript:;" class="voice_box msg_inner_wrapper primary_box">\
+															<div class="msg_item voice" length="' + msg.voice_msg_ext_info.play_length + '">\
+																<span class="voice_point">\
+																	<i class="add_on_icon voice"></i>\
+																	<audio preload type="audio/mpeg" src="/mp/getmediadata?__biz=' + json_data.bizuin_code + '&type=voice&msgid=' + msg.comm_msg_info.id + '&uin=' + json_data.uin_code + '&key=' + json_data.key + '" onended="on_finish_play();" alt="">not support</audio>\
+																</span>\
+																<span class="msg_desc"></span>\
+															</div>\
+															<span class="box_arrow"></span>\
+														</a>\
+													</div>\
+												</div>\
+											</div>';
+											jQuery(div).appendTo('.msg_page');
+                      }
+											break;
+										case APPMSG:
+											var div = '\
+											<div class="msg_list">\
+												<div class="msg_list_hd">\
+													<h3 class="msg_list_date" time="' + msg.comm_msg_info.datetime + '"></h3>\
+												</div>\
+												<div class="msg_list_bd">'
+
+											if( msg.app_msg_ext_info.is_multi == 0 )
+											{
+												div += '\
+													<div id="WXAPPMSG' + msg.comm_msg_info.id + '" class="msg_wrapper" msgid="' + msg.comm_msg_info.id + '">\
+														<p class="msg_date" time="' + msg.comm_msg_info.datetime + '"></p>\
+                            <div class="msg_inner_wrapper default_box news_box">\
+                              <a class="msg_item news" href="' + htmlEncode(msg.app_msg_ext_info.content_url) + '">\
+                                <div class="msg_item_hd">\
+																	<h4 class="msg_title">' + htmlEncode(msg.app_msg_ext_info.title) + '</h4>\
+																</div>\
+																<div class="msg_item_bd">\
+																	<div class="msg_cover">\
+																		<img src="' + htmlEncode(msg.app_msg_ext_info.cover) + '" alt="">\
+																	</div>\
+																	<p class="msg_desc">\
+																		' + htmlEncode(msg.app_msg_ext_info.digest) + '\
+																	</p>\
+																</div>\
+																<div class="msg_item_ft">\
+阅读原文<span class="add_on_icon arrow"></span>\
+																</div>\
+															</a>\
+														</div>\
+													</div>'
+											}
+											else
+											{
+													div += '\
+													<div id="WXAPPMSG'+ msg.comm_msg_info.id + '" class="msg_wrapper" msgid="' + msg.comm_msg_info.id + '">\
+                            <p class="msg_date" time="' + msg.comm_msg_info.datetime + '"></p>\
+                            <div class="msg_inner_wrapper default_box news_box">\
+                              <div class="msg_item multi_news">\
+																<a class="msg_cover" href="' + htmlEncode(msg.app_msg_ext_info.content_url) + '">\
+																	<img src="' + htmlEncode(msg.app_msg_ext_info.cover) + '" alt="">\
+																	<div class="msg_title_bar">\
+																		<h4 class="msg_title">' + htmlEncode(msg.app_msg_ext_info.title) + '</h4>\
+																	</div>\
+																</a>'
+																	
+																var msg_item_list = msg.app_msg_ext_info.multi_app_msg_item_list;
+																for( var app_msg_idx = 0; app_msg_idx < msg_item_list.length; ++app_msg_idx )
+																{
+																	var cur_msg_item = msg_item_list[app_msg_idx];
+																	div += '\
+																		<div class="sub_msg_list">\
+																			<a class="sub_msg_item" href="' + htmlEncode(cur_msg_item.content_url) + '">\
+																				<span class="thumb">\
+																					<img src="' + htmlEncode(cur_msg_item.cover) + '" alt="">\
+																				</span>\
+																				<h4 class="msg_title">' + htmlEncode(cur_msg_item.title) + '</h4>\
+																			</a>\
+																		</div>\
+																	';
+																}
+																
+													div += '</div>\
+														</div>\
+													</div>'
+											}
+											div += '\
+												</div>\
+											<div>	\
+											'
+
+											jQuery(div).appendTo('.msg_page');
+											break;
+
+									}
+
+								}
+									
+              }
+              is_continue = json_data.is_continue;
+              if( json_data.is_continue == 0 )
+              {
+                if( jQuery("#no_more").length == 0 && jQuery("#no_record").length == 0)
+                {
+                  var div = '\
+                    <div class="more_wrapper" id="no_more">\
+                    <a href="javascript:;" class="more_link">已无更多历史消息</a> \
+                    </div>';
+                  jQuery(div).appendTo("body");
+                }
+              }
+						},
+						complete: function(){
+              jQuery("#loading").remove();
+							init();
+						}
+					});
+				}	
+			}
+		})
+
+		function add_date(item, date){
+			if( item.html() == "" )
+			{
+				var str_date, today = new Date();
+				if( date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth() && date.getDate() == today.getDate() )
+				{
+          str_date = '<strong class="day">今天</strong>';
+				}
+				else if( date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth() && ( today.getDate() - date.getDate() == 1 ) )
+				{
+          str_date = '<strong class="day">昨天</strong>';
+				}
+				else
+				{
+          str_date = '<strong class="day">' + format_int( date.getDate() ) + '</strong>' +  monthList[date.getMonth()];
+				}
+				item.html(str_date);
+			}
+		}
+
+	});	
+
+	</script>
+    
+
+</head>
+<body>		  
+ 
+	<div class="msg_page">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 <div class="msg_list"><div class="msg_list_hd"><h3 class="msg_list_date" time="1396409021"></h3></div><div class="msg_list_bd"> <div id="WXAPPMSG40087" class="msg_wrapper" msgid="40087"><p class="msg_date" time="1414959021"></p>              <div class="msg_inner_wrapper default_box news_box">                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=203146821&idx=1&sn=abc09a67dc7bc009056bd2375f0274b7#rd">                  <div class="msg_item_hd"><h4 class="msg_title">第一届姑苏龙民下渝州</h4></div><div class="msg_item_bd"><div class="msg_cover"><img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkcTv24KWpLCnUUC0M0Zxf2DUzwWkDEHEg8MouicIKL1S12LomuNTGnvqqXEfJokmqvZ9ABO8icdbH5A/640" alt=""></div><p class="msg_desc">姑苏龙民很幸福</p></div><div class="msg_item_ft">阅读原文<span class="add_on_icon arrow"></span></div></a></div></div></div></div> 
+
+
+
+	 <div class="msg_list"><div class="msg_list_hd"><h3 class="msg_list_date" time="1395648749"></h3></div><div class="msg_list_bd"> <div id="WXAPPMSG38016" class="msg_wrapper" msgid="38016"><p class="msg_date" time="1413648749"></p>              <div class="msg_inner_wrapper default_box news_box">                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=202882251&idx=1&sn=bc53b456ccf2ea18a17e43d24ed14410#rd">                  <div class="msg_item_hd"><h4 class="msg_title">龙湖时代天街二期开盘</h4></div><div class="msg_item_bd"><div class="msg_cover"><img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkezgBMoq7bswMMU88icMgWCeuh7iacMRYLucodRDP9eOaadWLm1ZEiaIRxuH0JT81VhPcWTxh3IDueeg/640" alt=""></div><p class="msg_desc">10月17日，iPhone6姗姗来迟，但苹果专卖店前的长龙证明着果粉的狂热丝毫未减！</p></div><div class="msg_item_ft">阅读原文<span class="add_on_icon arrow"></span></div></a></div></div></div></div>  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1395210356"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					 
+					 
+					 
+					 
+					
+						<div id="WXAPPMSG36859" class="msg_wrapper" msgid="36859">
+							<p class="msg_date">2014.9.27</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=202670317&idx=1&sn=31ca5448742b8fd6b77f7c7404646ce5#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">龙湖时代天街二期样板间公开</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkfXBIBT8ZdlP6Cre7gpc6qpBOuvGLscDnLicPOfBLsqQexUGZ0dgu4BBaJW2Kf7q4wC9jgdMnoriaJg/640?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											9月27日，龙湖时代天街二期全新样板间在万千期待之中，盛装公开！开放首日来访客户破千，首批预约名额已超100组！作为苏州上半年第一热盘，人气势不可挡！									</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	  <div class="msg_list"><div class="msg_list_hd"><h3 class="msg_list_date" time="1394544642"></h3></div><div class="msg_list_bd"> <div id="WXAPPMSG35175" class="msg_wrapper" msgid="35175">	<p class="msg_date">2014.9.23</p>            <div class="msg_inner_wrapper default_box news_box">                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=202639948&idx=1&sn=bc21f510419875a0ca3145f34dccf1de#rd">                  <div class="msg_item_hd"><h4 class="msg_title">龙湖时代天街业主答谢盛典暨二期新品发布会</h4></div><div class="msg_item_bd"><div class="msg_cover"><img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkfbww5afbMmm4rqjr0r2fDAF1eM1SqtjWgz20DqBQWFn3h5e0bcWPwricqOQeR0aPgEjYaWdiaLqeSQ/640?tp=webp" alt=""></div><p class="msg_desc">龙湖时代天街业主答谢盛典暨二期新品发布会</p></div><div class="msg_item_ft">阅读原文<span class="add_on_icon arrow"></span></div></a></div></div></div></div>  
+
+
+
+<div class="msg_list"><div class="msg_list_hd"><h3 class="msg_list_date" time="1394174166"></h3></div><div class="msg_list_bd"> <div id="WXAPPMSG34234" class="msg_wrapper" msgid="34234">	<p class="msg_date">2014.8.18</p>            <div class="msg_inner_wrapper default_box news_box">                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=202229885&idx=1&sn=fa6af129bf3efcf7536e4793f7e5a401#rd">                  <div class="msg_item_hd"><h4 class="msg_title">非常大置换，百万开学礼！</h4></div><div class="msg_item_bd"><div class="msg_cover"><img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkddRUrMpOCgUMSHmxC5ZZpvNeibZcAnhf8dH0icJZwku9ZE7qvSRWtZCTjgrgn7CzXic14SG8Sh44OSA/640?tp=webp" alt=""></div><p class="msg_desc">非常大置换，百万开学礼！</p></div><div class="msg_item_ft">阅读原文<span class="add_on_icon arrow"></span></div></a></div></div></div></div> 
+	
+	
+	
+	
+	
+	<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1394071665"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG33934" class="msg_wrapper" msgid="33934">
+						<p class="msg_date">2014.8.2</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=202079772&idx=1&sn=25fd63be1c2d6720f7dcfbd53571e8d0#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">第一届小龙人夏利营结营仪式</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkeS0TMBCb7Rrcpibv42hASp4MzxZ7P6C8rxBsnV0YRxqiaZrF3a7tX8QiaEnNyFXcfTlPQO8WatPUicuw/640?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											转眼之间，小龙人成长计划暑期夏令营已经陪伴我们一个月了，还记得宝贝们上课的场景吗？										</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+				
+				
+				
+				
+				
+				
+	
+	
+	
+	
+	
+	
+	<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1393416062"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG31830" class="msg_wrapper" msgid="31830">
+						<p class="msg_date">2014.7.5</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=201800100&idx=1&sn=695bd22f789698b0ac694fd012726c70&3rd=MzA3MDU4NTYzMw==&scene=6#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">第一届小龙人夏利营开营</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkfdmdHUnBRvvHdOsX00sQfia8vtLmX8PtHe8tL4AYSico6nsOkvEGIB2icRCepnze1WO8soOpTb77G6A/0" alt="">
+										</div>
+										<p class="msg_desc">
+											第一届小龙人夏利营开营</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+      
+																					  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="13931110356"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG31830" class="msg_wrapper" msgid="31830">
+							<p class="msg_date">2014.6.18</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MjM5OTYwMjAyMA==&mid=200517053&idx=3&sn=5e3c84f46f31725c238097d295d26213&3rd=MzA3MDU4NTYzMw==&scene=6#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">龙湖万人西瓜世界杯</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkdU2WkyV4Wb6Bian0GxObSvQseRgyBAl3SvEsLuj9EClg0Vcic5KGeTTrAIb98sqfMt8Nyglzicw2qew/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											龙湖6月再火全城——【万人西瓜杯】PK赛圆满落幕</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+																	  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392893886"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG31198" class="msg_wrapper" msgid="31198">
+							<p class="msg_date">2014.5.11</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=201139465&idx=1&sn=99634ed139a34971d9d585a578879510#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">龙湖时代天街首次开盘</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkfPTgqYcJvutx73k6ppFzmfsytqa50sXvibbkCh9ibpyczKwGGzEpNccicBAxXac3KDh4EBoUOf8DEZQ/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											龙湖时代天街首开大捷，加推在即！									</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+																	  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392722894"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG30805" class="msg_wrapper" msgid="30805">
+							<p class="msg_date">2014.4.26</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=200991066&idx=1&sn=35cb8d3371af99ac2cf5626bb3760397#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title">龙湖时代天街三大主力店签约仪式</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkd2XM5NT1KEOENn1MJLdibQicuic9KotVhpXGicfJnZiaQqPOicgkbibyLXB1f4ftmPlDWIicFRmpUf24P9PA/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											龙湖时代天街三大主力店意向合作签约仪式圆满落幕,冬奥冠军申雪/赵宏博亲临助阵										</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+																	  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392344530"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG30092" class="msg_wrapper" msgid="30092">
+							<p class="msg_date">2014.4.16</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=200845002&idx=1&sn=9e3d83b220a2c9c4361539f84e0ab934#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 万只泰迪熊空降狮山路</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkfBJ31sTAR0WgBWib455nhOsibibw826pmR9p6uG9dJZpomoIxbLF6I5yiaicJDSL1bOMeNB3icE9J6qnfw/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											今天是周一，阳光特别明媚，我和我的一万只泰迪小伙伴们很兴奋，经过几天的旅途颠簸，今天终于就要在狮山路和大家见面了。										</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+																	  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392263411"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG29915" class="msg_wrapper" msgid="29915">
+							<p class="msg_date">2014.3.29</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=200691874&idx=1&sn=0309571da00675de0a2260ab7bc439e2#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 龙湖时代天街售楼处公开</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkcsbPPavhNDuovialoxG5ozjBQ2gTmz7YertZofhbwBBfjCiapBxNKtUNrYiaCicMibwTeEBp1wwWCs3Aw/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											3月29日，龙湖时代天街售楼处璀璨开放，风雨无阻，逾2000人争睹！6小时已成功预约300组！龙湖时代天街，人气超越苏州想象！几千位购房者、新闻媒体、社会各界人士一睹龙湖时代天街售楼处的风采，共同见证了这一历史性时刻。									</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+										</div>
+				</div>
+
+				
+																	  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392133016"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG29679" class="msg_wrapper" msgid="29679">
+							<p class="msg_date">2014.3.18</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=200554290&idx=1&sn=57d57b5338d9da38b01bd41844773bb1#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 龙湖时代天街品牌发布会</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkeibOAnvQxTbgeCc6TaMFb6FuUMrmiaQnricUlPD3u65j0cldOWdzuEGuytoiaLtrl9q3xK3PAErqTKoQ/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											龙湖时代天街全球首映礼震撼启幕！						</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					
+																		  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392133016"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG29679" class="msg_wrapper" msgid="29679">
+							<p class="msg_date">2013.11.6</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=203559888&idx=1&sn=858ef986c7c0b0eda3d98de2f337d1bd#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 龙第一届姑苏媒体渝州行</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkeibOAnvQxTbgeCc6TaMFb6F8xReVzxjzs4GXsVZRGsd77FIGRHgMEF5mTFv8lYhID6FZ3uvVfoTzg/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											为我们解读作为从重庆走出的中国房地产十强企业，这个名声在外的“龙湖品质”究竟是浪得虚名，还是名不虚传？					</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					
+					</div>
+					
+					
+					
+					
+					
+					
+																		  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392133016"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG29679" class="msg_wrapper" msgid="29679">
+							<p class="msg_date">2013.9.17</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=203559703&idx=1&sn=aea1f1b8ae65098a1aecc954b684b39c#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 苏州高新区狮山商贸区8大重点项目集体开工</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkeibOAnvQxTbgeCc6TaMFb6F2ELNibQ50vC6oiawOyrEXbib3YZWBPHGdSawe3cZrJ9qgsAxLRMX2vyVg/0?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											自今年4月豪掷25亿夺得狮山商贸区中心阵地后，龙湖地产在中秋佳节来临之际与苏州正式“大团圆”。9月17日，苏州高新区狮山商贸区重点项目在龙湖狮山路地块上集体开工，作为狮山商贸区的重要一员，龙湖地产携苏州1号作品隆重亮相。			</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+																		  							<div class="msg_list">
+					<div class="msg_list_hd">
+						<h3 class="msg_list_date" time="1392133016"></h3>
+					</div>
+					<div class="msg_list_bd">
+					 
+					
+						<div id="WXAPPMSG29679" class="msg_wrapper" msgid="29679">
+							<p class="msg_date">2013.4.22</p>
+              <div class="msg_inner_wrapper default_box news_box">
+                <a class="msg_item news" href="http://mp.weixin.qq.com/s?__biz=MzA3NzE0MjgzNg==&mid=203558523&idx=1&sn=0fad303260f04d372248cd7c99e12155#rd">
+                  <div class="msg_item_hd">
+										<h4 class="msg_title"> 新区土拍，龙湖拿下苏地-G-18号地块</h4>
+									</div>
+									<div class="msg_item_bd">
+										<div class="msg_cover">
+											<img src="http://mmbiz.qpic.cn/mmbiz/fn1chr80qkeibOAnvQxTbgeCc6TaMFb6FxK7G0y34uXXNQKaAqkiczRhpiaU9ib0KP5AbCD61gZsECtH9ghV2b8OBQ/640?tp=webp" alt="">
+										</div>
+										<p class="msg_desc">
+											　2013年4月22日，龙湖拿下苏地-G-18号地块，总价25亿，楼面价4685元/平方米，溢价率66.48%。			</p>
+									</div>
+									<div class="msg_item_ft">
+阅读原文<span class="add_on_icon arrow"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+	
+
+				
+							</div>
+
+          <div class="more_wrapper" id="no_more">
+        <a href="javascript:;" class="more_link">已无更多历史消息</a>
+      </div>
+    </body>
+
+<div style="display:none"> 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F27dcfa9b709e9193ebb664cd84425298' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+ </div>
+</html>
+

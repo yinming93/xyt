@@ -1,0 +1,142 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+/*完美背景图平铺*/
+/*body{
+	background:url(../img/bg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;	
+	}*/
+img.bg {
+    min-height: 100%;
+    min-width: 320px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.bbtn{
+	width: 84%;
+	/*height: 160px;*/
+	/*background-color: white;*/
+	border-radius: 5px;
+	position: absolute;
+	left: 8%;
+	top: 49%;
+	/*overflow: hidden;*/
+}
+.bbtn .btna{
+	width: 100%;
+	background: white;
+	height: 70px;
+	position: relative;
+}
+.btna span:nth-child(1){
+	font-size: 50px;
+	color: #F8BC11;
+	line-height: 79px;
+	margin-left: 12px;
+}
+.btna span:nth-child(2){
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+
+
+.bbtn .btnb{
+	width: 100%;
+	background: white;
+	height: 70px;
+	position: relative;
+	margin-top: 2px;
+}
+.btnb span:nth-child(1){
+	font-size: 50px;
+	color: #F8BC11;
+	line-height: 79px;
+	margin-left: 12px;
+}
+.btnb span:nth-child(2){
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.bbtn .btnc{
+	width: 100%;
+	background: white;
+	height: 70px;
+	position: relative;
+	margin-top: 2px;
+}
+.btnc span:nth-child(1){
+	font-size: 50px;
+	color: #F8BC11;
+	line-height: 79px;
+	margin-left: 12px;
+}
+.btnc span:nth-child(2){
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.A{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 70px;
+	background-color: red;
+	opacity: 0;
+}
+.B{
+	position: absolute;
+	top: 72px;
+	width: 100%;
+	height: 70px;
+	background-color: red;
+	opacity: 0;
+}
+.C{
+	position: absolute;
+	top: 144px;
+	width: 100%;
+	height: 70px;
+	background-color: red;
+	opacity: 0;
+}
+.qr{
+	width: 30%;
+	height: 50px;
+	font-size: 22px;
+	font-weight: bold;
+	color:#D0B824;
+	text-align: center;
+	line-height: 50px;
+	position: absolute;
+	right: 0%;
+	margin-top: 4%;
+}
+#six input{
+	width: 50%;
+	height: 30px;
+	position: absolute;
+	top: 70%;
+	left: 25%;
+}
+.modal-content{
+	margin-top: 36%;
+}
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+.bbtn{
+	position: absolute;
+    left: 8%;
+    top: 43%;
+}
+}

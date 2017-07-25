@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>龙湖时代天街微楼书</title>
+<meta charset="gb2312">
+<link rel="stylesheet" href="css/mobi2.css"/>
+<link rel="apple-touch-icon-precomposed" href="logo.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="Description" content="龙湖时代天街微楼书" />
+<meta name="Keywords" content="龙湖时代天街微楼书" />
+
+</head>
+<body class="index">
+<section id="M" class="index">
+<div class="index-content">
+	
+	<div class="index-btn animated bounceInUp"></div>
+
+
+</div>
+
+</section>
+
+<script type="text/javascript">
+var dataForWeixin={
+	appId:	"",
+	img:	"http://qinglang.w66a.bolead.com/wls/lhsdtj2/images/a1.jpg",
+	url:	"http://qinglang.w66a.bolead.com/wls/lhsdtj2/default.html",
+	title:	"龙湖时代天街微楼书",
+	desc:	"龙湖时代天街，一个时代，一个天街",
+	fakeid:	"",
+};
+(function(){
+	var onBridgeReady=function(){
+		// 发送给好友; 
+		WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			WeixinJSBridge.invoke('sendAppMessage',{
+				"appid":		dataForWeixin.appId,
+				"img_url":		dataForWeixin.img,
+				"img_width":	"120",
+				"img_height":	"120",
+				"link":				dataForWeixin.url,
+				"desc":				dataForWeixin.desc,
+				"title":			dataForWeixin.title
+			}, function(res){});
+		});
+		// 分享到朋友圈;
+		WeixinJSBridge.on('menu:share:timeline', function(argv){
+			WeixinJSBridge.invoke('shareTimeline',{
+			"img_url":dataForWeixin.img,
+			"img_width":"120",
+			"img_height":"120",
+			"link":dataForWeixin.url,
+			"desc":dataForWeixin.desc,
+			"title":dataForWeixin.title
+			}, function(res){});
+		});
+	};
+	if(document.addEventListener){
+		document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+		document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+		document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+})();
+</script>
+
+
+<script src="http://g.tbcdn.cn/kissy/k/1.4.1/seed-min.js" data-config="{combine:true}"></script>
+<script>
+KISSY.use('dom,event', function(S,DOM,Event,Anim) {  
+    Event.on('.index-btn', 'click', function(){
+		window.location.href='index.html';
+    });
+ });
+</script>
+
+<div style="display:none"> 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F27dcfa9b709e9193ebb664cd84425298' type='text/javascript'%3E%3C/script%3E"));
+</script>
+ </div>
+</body>
+</html>

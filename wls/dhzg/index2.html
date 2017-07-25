@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>龙湖时代天街微楼书</title>
+<meta name="keywords" content="龙湖时代天街微楼书" />
+<meta name="description" content="龙湖时代天街微楼书" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no">
+<script type="text/javascript" src="js/swipe.js"></script>
+<script type="text/javascript" src="js/zepto.js"></script>
+<link type="text/css" rel="stylesheet" href="css/mobi.css" media="all" />
+</head>
+<body>
+
+
+
+
+<section id="M">
+    <div class="toplogo"><img src="images/logo.png" width="100%" alt="龙湖时代天街" /></div>
+    <div style="-webkit-transform:translate3d(0,0,0);">
+        <div id="banner_box" class="box_swipe">
+            <ul>
+                <li><img src="images/a1.jpg" alt="龙湖时代天街" style="width:100%;" /></li>
+                <li><img src="images/a2.jpg" alt="龙湖时代天街" style="width:100%;" /></li>
+				<li><img src="images/a3.jpg" alt="龙湖时代天街" style="width:100%;" /></li>
+                <li><img src="images/a4.jpg" alt="龙湖时代天街" style="width:100%;" /></li>
+				<li><img src="images/a5.jpg" alt="龙湖时代天街" style="width:100%;" /></li>
+            </ul>
+            <ol>
+                <li class="on"></li>
+                <li ></li>
+				 <li ></li>
+				  <li ></li>
+				   <li ></li>
+            </ol>
+        </div>
+    </div>
+	<script>
+    $(function(){
+		new Swipe(document.getElementById('banner_box'), {
+			speed:500,
+			auto:3000,
+			callback: function(){
+				var lis = $(this.element).next("ol").children();
+				lis.removeClass("on").eq(this.index).addClass("on");
+			}
+		});
+    });
+    </script>
+    <div class="index-menu">
+        <ul>
+        	<li><a href="2.html"><img src="images/btn_1.png" width="100%" alt="龙湖品牌"/></a></li>
+            <li><a href="1.html"><img src="images/btn_2.png" width="100%" alt="项目概况"/></a></li>
+            <li><a href="3.html"><img src="images/btn_3.png" width="100%" alt="电子沙盘"/></a></li>
+            <li><a href="5.html"><img src="images/btn_4.png" width="100%" alt="新闻动态"/></a></li>
+             </ul>
+			 <ul>
+        	<li><a href="4.html"><img src="images/btn_5.png" width="100%" alt="龙湖物业"/></a></li>
+            <li><a href="6.html"><img src="images/btn_6.png" width="100%" alt="明星顾问"/></a></li>
+            <li><a href="dh.html"><img src="images/btn_7.png" width="100%" alt="GPS导航"/></a></li>
+            <li><a href="15.html"><img src="images/btn_8.png" width="100%" alt="联系我们"/></a></li>
+             </ul>
+			 
+    </div>
+	
+	<br/>
+<div class="dashibg"><img src="images/bottom.png" width="100%" /></div>
+
+   
+</section>
+<!--<div class="mline"><img src="images/line.png" width="100%" /></div>-->
+
+<aside class="base-nav">
+    <div class="plug-phone">
+        <div class="plug-menu"><span class="close"></span></div>
+        <div class="plug-btn plug-btn1 close"><a href="index.html"><span>首页</span></a></div>
+        <div class="plug-btn plug-btn2 close"><a href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&wd=%E9%BE%99%E6%B9%96%C2%B7%E6%97%B6%E4%BB%A3%E5%A4%A9%E8%A1%97&c=224&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&vt=map"><span>到达</span></a></div>
+        <div class="plug-btn plug-btn3 close"><a href="tel:0512-66066666"><span>电话</span></a></div>
+        <div class="plug-btn plug-btn4 close"><a href="15.html"><span>活动</span></a></div>
+    </div>
+</aside>
+
+<footer class="foot">&copy; 2014 龙湖时代天街</footer>
+<script src="js/1.0.js"></script>
+<script src="js/gmu.js"></script>
+<script src="js/mod.js"></script>
+<div style="display:none;"><!-- 统计链接 --></div>
+<script type="text/javascript">
+
+var dataForWeixin={
+	appId:	"wx460eb9804f83dfae",
+	img:	"http://114.215.183.41:8080/wls/jxxtd/images/share.png",
+	url:	"http://114.215.183.41:8080/wls/jxxtd/",
+	title:	"津西·新天地微楼书",
+	desc:	"津西·新天地，非传统豪宅",
+	fakeid:	"",
+};
+(function(){
+	var onBridgeReady=function(){
+		// 发送给好友; 
+		WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			WeixinJSBridge.invoke('sendAppMessage',{
+				"appid":		dataForWeixin.appId,
+				"img_url":		dataForWeixin.img,
+				"img_width":	"120",
+				"img_height":	"120",
+				"link":				dataForWeixin.url,
+				"desc":				dataForWeixin.desc,
+				"title":			dataForWeixin.title
+			}, function(res){});
+		});
+		// 分享到朋友圈;
+		WeixinJSBridge.on('menu:share:timeline', function(argv){
+			WeixinJSBridge.invoke('shareTimeline',{
+			"img_url":dataForWeixin.img,
+			"img_width":"120",
+			"img_height":"120",
+			"link":dataForWeixin.url,
+			"desc":dataForWeixin.desc,
+			"title":dataForWeixin.title
+			}, function(res){});
+		});
+	};
+	if(document.addEventListener){
+		document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+		document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+		document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+})();
+</script>
+
+</body>
+</html>

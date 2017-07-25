@@ -1,0 +1,16 @@
+/* CSS Document */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea,p,th,td {	margin:0;	padding:0;font-family:'Microsoft Yahei',Arial;}
+html,body {font-size:20px; font-family:'Microsoft Yahei',Arial;height:100%;}
+*{ margin:0; padding:0; list-style:none;  }
+img{ border:none;}
+a{ text-decoration:none;}
+.clear{ clear:both; height:0px; line-height:0; overflow:hidden;}
+.page{ width:100%; margin:0 auto; clear:both; overflow:hidden;}
+.content{ width:700px; height:auto; margin:0 auto;}
+.contents{ width:700px;margin:0 auto;}
+.connews{ width:700px; height:auto; margin:0 auto;}
+.indexbj{ background:#4d335e;}
+.cont{ width:440px; height:700px; background:url(../img/contact/xiaoshou/bj.jpg) no-repeat; padding-left:260px; padding-top:320px;}
+	.rexianr{ width:135px; text-align:center; float:left; }
+	.dianhua{ width:180px; text-align:center; float:left; }
+td a{ color:#000;}

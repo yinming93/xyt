@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>花园电梯洋房</title>
+<meta name="Keywords" content="花园电梯洋房" />
+<meta name="Description" content="花园电梯洋房" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no">
+<script type="text/javascript" src="js/swipe.js"></script>
+<script type="text/javascript" src="js/zepto.js"></script>
+<link type="text/css" rel="stylesheet" href="css/mobi.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/mains.css" media="all" />
+</head>
+<body>
+<section id="M">
+<div style="-webkit-transform:translate3d(0,0,0);">
+<div id="banner_box" class="box_swipe">
+<ul>
+<li><img src="images/huxing2_1.jpg" alt="花园电梯洋房" style="width:100%;" /></li>
+<li><img src="images/huxing2_2.jpg" alt="花园电梯洋房" style="width:100%;" /></li>
+<li><img src="images/huxing2_3.jpg" alt="花园电梯洋房" style="width:100%;" /></li>
+<li><img src="images/huxing2_4.jpg" alt="花园电梯洋房" style="width:100%;" /></li>
+<!-- <li><img src="images/huxing3.jpg" alt="华府樟园" style="width:100%;" /></li> -->
+</ul>
+<ol>
+<li class="on"></li><li></li><li></li><li></li><!-- <li></li> -->
+</ol>
+</div>
+</div>
+<script>
+    $(function(){
+		new Swipe(document.getElementById('banner_box'), {
+			speed:700,
+			auto:8000,
+			callback: function(){
+				var lis = $(this.element).next("ol").children();
+				lis.removeClass("on").eq(this.index).addClass("on");
+			}
+		});
+    });
+    </script>
+</section>
+<aside class="base-nav">
+<div class="plug-phone">
+<div class="plug-menu"><span class="close"></span></div>
+<div class="plug-btn plug-btn1 close"><a href="index.html"><span>首页</span></a></div>
+<div class="plug-btn plug-btn2 close"><a href="huxing.html"><span>户型介绍</span></a></div>
+<div class="plug-btn plug-btn3 close"><a href="tel:0512-67568888"><span>电话</span></a></div>
+<div class="plug-btn plug-btn4 close"><a href="http://api.map.baidu.com/marker?location=31.390163,120.63239&title=中粮祥云国际&name=中粮祥云国际&content=相城区苏州市相城区相城大道西建元路北（地铁2号线蠡口站2号出口南约300米）&output=html&src=sft|sft"><span>一键导航</span></a></div>
+</div>
+</aside>
+<script src="js/1.0.js"></script>
+<script src="js/gmu.js"></script>
+<script src="js/mod.js"></script>
+
+</body>
+</html>

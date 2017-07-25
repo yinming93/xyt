@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>龙湖时代天街微楼书</title>
+<meta name="keywords" content="龙湖时代天街微楼书" />
+<meta name="description" content="龙湖时代天街微楼书" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no">
+<script type="text/javascript" src="js/swipe.js"></script>
+<script type="text/javascript" src="js/zepto.js"></script>
+<link type="text/css" rel="stylesheet" href="css/mobi.css" media="all" />
+</head>
+<body bgcolor="#000000">
+
+
+
+
+<section id="M">
+<div class="index-btn"></div>
+   <div> <a href=index.html><img src="cover.gif" width="100%" alt="龙湖时代天街" /></a></div>
+    
+</section>
+
+<script src="js/1.0.js"></script>
+<script src="js/gmu.js"></script>
+<script src="js/mod.js"></script>
+<div style="display:none;"><!-- 统计链接 --></div>
+<script type="text/javascript">
+var dataForWeixin={
+	appId:	"",
+	img:	"http://qinglang.w66a.bolead.com/wls/lhsdtj2/images/a1.jpg",
+	url:	"http://qinglang.w66a.bolead.com/wls/lhsdtj2/default.html",
+	title:	"龙湖时代天街微楼书",
+	desc:	"龙湖时代天街，一个时代，一个天街",
+	fakeid:	"",
+};
+(function(){
+	var onBridgeReady=function(){
+		// 发送给好友; 
+		WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			WeixinJSBridge.invoke('sendAppMessage',{
+				"appid":		dataForWeixin.appId,
+				"img_url":		dataForWeixin.img,
+				"img_width":	"120",
+				"img_height":	"120",
+				"link":				dataForWeixin.url,
+				"desc":				dataForWeixin.desc,
+				"title":			dataForWeixin.title
+			}, function(res){});
+		});
+		// 分享到朋友圈;
+		WeixinJSBridge.on('menu:share:timeline', function(argv){
+			WeixinJSBridge.invoke('shareTimeline',{
+			"img_url":dataForWeixin.img,
+			"img_width":"120",
+			"img_height":"120",
+			"link":dataForWeixin.url,
+			"desc":dataForWeixin.desc,
+			"title":dataForWeixin.title
+			}, function(res){});
+		});
+	};
+	if(document.addEventListener){
+		document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+		document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+		document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+})();
+</script>
+</body>
+</html>

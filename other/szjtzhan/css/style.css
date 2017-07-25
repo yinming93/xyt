@@ -1,0 +1,49 @@
+ul, li {margin:0; padding:0;list-style:none}
+/*
+body {
+ margin: 0;
+ height: 100%;
+ background: #333;
+}
+*/
+
+body{
+	margin:0;padding:0;
+	overflow:scroll;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+
+
+
+.wp {
+ position: relative;
+ width: 80%;
+ height: 370px;
+ overflow: hidden;
+ margin: 22% auto 0 auto;
+ /*border: 4px solid #121212;*/
+/* background: #fff;*/
+}
+.slider {
+ position: absolute;
+ width: 100%;
+ padding: 0 20px;
+ left:0;
+ top: 0;
+}
+.fl {float:left}
+.slider img {display:block; padding: 2px; border: 1px solid #ccc} 
+.slider li {padding: 25px 25px 0px 0px; border-bottom: 1px dashed #ccc;overflow:hidden;width:100%}
+.slider p {font-size: 16px;margin:0;padding-left:100px;color:#333;line-height:20px;}
+
+.bg{
+	position: absolute;
+	width: 100%;
+	/*padding: 0 20px;*/
+	left:0;
+	top: 0;
+	z-index: -1;
+}
+
+

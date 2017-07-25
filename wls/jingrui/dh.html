@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>东山天境·微楼书</title>
+<link rel="stylesheet" type="text/css" href="style/page.css"/>
+<script type="text/javascript" src="script/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/main2.js"></script>
+</head>
+<body style="background:#ffffff;">
+
+<div class="warp">
+
+
+<a href="javascript:;" class="dh">
+    	<img src="images/dhico.png" />
+       
+    </a>
+
+
+    <div class="video">
+	<a href="index.html"><img src="images/main.jpg" /></a>
+      
+	  
+	  
+	   <!-- 嵌入百度地图 -->
+<!--百度地图容器-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&amp;ak=51ecef10d0211f656923ebaae48ee699"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.5&amp;ak=51ecef10d0211f656923ebaae48ee699&amp;services=&amp;t=20130924033205"></script>
+<div id="dituContent" style="width:99.65625%; height:400px; margin:0 auto;"></div>
+
+	  
+	 <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+    
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(120.420136,31.100128);//定义一个中心点坐标
+        map.centerAndZoom(point,16);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+    
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    
+    //地图控件添加函数：
+    function addMapControl(){
+                        }
+    
+    //标注点数组
+   var markerArr = [{title:"东山天境",content:"地址：吴中湖滨路1号（东山国宾馆东侧）",point:"120.420136|31.100128",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+		 ];
+    //创建marker
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    
+    initMap();//创建和初始化地图
+</script> 
+	  
+	  
+    </div>
+  
+</div>
+
+
+
+
+<div class="lb"></div>
+<div class="footer">
+	<img src="images/ft1.png" />
+    <div class="ftbox">
+    	<ul class="ftu">
+            <li><a href="dj.html"><img src="images/fico1.png" />登记</a></li>
+            <li><a href="dh.html"><img src="images/fico2.png" />导航</a></li>
+            <li><a href="tel:0512-68581888"><img src="images/fico3.png" />拨号</a></li>
+            <li style="border:0 none;"><a href="video.html" style="border:0 none;"><img  src="images/fico4.png" />视频</a></li>
+        </ul>
+    </div>
+    <a href="tel:0512-68581888"><img src="images/ft3.jpg" /></a>
+   
+</div>
+
+
+<!--
+
+<div class="pb6"></div>
+<div class="botton">
+    <div class="bttx"></div>
+   <ul>
+        <li><a href="pp.html"><i><img src="images/ico1.png" /></i><span>项目概况</span></a></li>
+        <li><a href="xx.html"><i><img src="images/ico2.png" /></i><span>实景鉴赏</span></a></li>
+        <li><a href="hx.html"><i><img src="images/ico3.png" /></i><span>户型相册</span></a></li>
+        <li><a href="hd.html"><i><img src="images/ico4.png" /></i><span>蔚蓝行动</span></a></li>
+        <li><a href="360/index.html"><i><img src="images/ico5.png" /></i><span>全景展示</span></a></li>
+    </ul>
+</div>
+-->
+
+
+
+
+
+
+
+<!-- 首页导航 -->
+<div class="dhm">
+    <div class="dhbox">
+        <a href="javascript:;" class="dhgb"><img src="images/gb.png" /></a>
+        <ul>
+        	<li>
+            	<a href="dstj1.html">
+                    <div class="dhl"><img src="images/he.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>地境：一线山湖湾，贵乎稀有</span>  </p>
+                      
+                        <p class="yw">Geographical position</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" margin-left:20%;">
+            	<a href="dstj2.html">
+                    <div class="dhl"><img src="images/tian.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>天境：新苏式湖滨风情院落</span>  </p>
+               
+                        <p class="yw">Form a complete set</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+            	<a href="dstj3.html">
+                    <div class="dhl"><img src="images/yuan.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>意境：启园之后的湖滨园林</span> </p>
+                      
+                        <p class="yw">The artistic conception</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" margin-left:20%;">
+            	<a href="dstj4.html">
+                    <div class="dhl"><img src="images/gong.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>情境：属于你的那一种生活</span> </p>
+      
+                        <p class="yw">The situation</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+            	<a href="dstj5.html">
+                    <div class="dhl"><img src="images/yuan1.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>逸境：定制国宾生活排场</span> </p>
+                       
+                        <p class="yw">Yat territory</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" margin-left:20%;">
+            	<a href="dstj6.html">
+                    <div class="dhl"><img src="images/zhuan.png" /></div>
+                    <div class="dhr">
+                        <p class="dht"><span>心境：天赋湖山，万境归心</span> </p>
+                        
+                        <p class="yw">The heart </p>
+                    </div>
+                </a>
+            </li>
+           
+            <!--<li><a href="hygl.html#piao.qq.com"><img src="images/dh1.png" /></a></li>
+            <li style=" margin-left:23%;"><a href="tgkw.html#piao.qq.com"><img src="images/dh2.png" /></a></li>
+            <li><a href="yzdh.html#piao.qq.com"><img src="images/dh3.png" /></a></li>
+            <li style=" margin-left:23%;"><a href="gfzr.html#piao.qq.com"><img src="images/dh4.png" /></a></li>
+            <li><a href="yzly.html#piao.qq.com"><img src="images/dh5.png" /></a></li>
+            <li style=" margin-left:23%;"><a href="zsyp.html#piao.qq.com"><img src="images/dh6.png" /></a></li>
+            <li><a href="lzfx.html#piao.qq.com"><img src="images/dh7.png" /></a></li>-->
+       </ul>
+    </div>
+    <div class="zlian"><img src="images/dhbg_02.png" /></div>
+</div>
+<!--首页导航结束-->
+
+
+
+</body>
+</html>
+
+   
+
+
+
+

@@ -1,0 +1,66 @@
+/* CSS Document */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,textarea,p,th,td {	margin:0;	padding:0;font-family:'Microsoft Yahei',Arial;}
+
+*{ margin:0; padding:0; list-style:none;  }
+img{ border:none;}
+a{ text-decoration:none;}
+
+.page{ width:600px; margin:0 auto; clear:both; overflow:hidden;}
+.content{ width:600px; height:auto; margin:0 auto;}
+.contents{ width:600px;margin:0 auto;}
+.connews{ width:600px; height:auto; margin:0 auto;}
+
+
+
+/* 返回浮动效果代码*/
+.lanmu{ top: 0; margin: 0 auto; position: fixed;height:100px; width:600px; z-index: 999;_top:auto; _width: 100%; _position: absolute; _top:0}
+.conTop{height:80px; background:url(../img/public/lanmu_bj.png) repeat-x left top; width:600px; padding-top:10px;}
+.conTopL{float:left; width:111px; margin:0 10px;text-align:center;}
+.conTopL a{display:block; }
+
+.conTopC{float:left; width:400px; line-height:60px; text-align:center; color:#fff; font-size:30px;}
+/* 导航浮动效果代码*/
+.nextpage{ bottom: 0; margin: 0 auto; position: fixed;height:84px; width:600px; z-index: 999;_bottom:auto; _width: 100%;_position: absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+.navbar{width:600px;overflow:hidden;	}
+.navbar ul li{float:left;width:140px;height:84px;}
+.navbar ul li a{display:block;width:140px;height:84px;text-decoration:none;	}
+
+
+
+
+.homes {width: 600px;height: 1020px;display:block; overflow:hidden;}			
+.homes .slider {width: 100%;}			
+.homes .slider .item {position: relative;top: 0;left: 0;width: 600px;height: 1020px;}	
+
+		.Indicators{position:fixed; bottom: 110px; width: 600px;height: 20px;margin:0 auto; text-align:center; z-index:1000;}			
+		.Indicators .buttons {opacity: 0.7;filter: alpha(opacity:70); display: inline-block; height: 16px; width: 16px; margin: 0 16px 0 0; padding: 0; -webkit-border-radius:16px; -moz-border-radius:16px; -o-border-radius:16px; border-radius:16px; background: #f8f5f5; overflow:hidden;}				
+		.Indicators .selected {background: #f8f5f5; color: #f8f5f5;opacity: 1	;filter: alpha(opacity:100);}
+
+
+
+.contus{ bottom: 0; margin: 0 auto; position: fixed;height:84px; width:600px; z-index: 999;_bottom:auto; _width: 100%;_position: absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+
+.contnav01{background:url(../img/contact/default/bj.png) no-repeat 0px 0px;}
+.contnav02{background:url(../img/contact/default/bj.png) no-repeat 0px -90px;}
+.contnav03{background:url(../img/contact/default/bj.png) no-repeat 0px -180px;}
+.contnav04{background:url(../img/contact/default/bj.png) no-repeat 0px -270px;}
+
+.contnav02A{background:url(../img/contact/default/bj.png) no-repeat 0px -360px;}
+.contnav03A{background:url(../img/contact/default/bj.png) no-repeat 0px -450px;}
+.contnav04A{background:url(../img/contact/default/bj.png) no-repeat 0px -540px;}
+
+.navbar01{background:url(../img/public/bj.png) no-repeat 0px 0px;}
+.navbar02{background:url(../img/public/bj.png) no-repeat 0px -90px;}
+.navbar03{background:url(../img/public/bj.png) no-repeat 0px -180px;}
+.navbar04{background:url(../img/public/bj.png) no-repeat 0px -270px;}
+.navbar05{background:url(../img/public/bj.png) no-repeat 0px -360px;}
+
+.navbar01A{background:url(../img/public/bj.png) no-repeat 0px -450px;}
+.navbar02A{background:url(../img/public/bj.png) no-repeat 0px -540px;}
+.navbar03A{background:url(../img/public/bj.png) no-repeat 0px -630px;}
+.navbar04A{background:url(../img/public/bj.png) no-repeat 0px -720px;}
+.navbar05A{background:url(../img/public/bj.png) no-repeat 0px -810px;}
+.sanji{ background:#f5e2d3;}
+
+
