@@ -1,0 +1,16 @@
+<ul>  
+<li><strong id="endtime"></strong>  
+</li>  
+</ul>  
+ <!-- <button onclick="remainTime()">点我</button> -->
+<script type="text/javascript">  
+var i = 10;  
+function remainTime(){  
+    if(i==0){  
+        location.href='http://www.baidu.com';  
+    }  
+    document.getElementById('endtime').innerHTML=i--;  
+    setTimeout("remainTime()",1000);  
+}  
+remainTime();
+</script>  

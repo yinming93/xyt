@@ -1,0 +1,27 @@
+修改服务器密码 打开putty输入ip进入界面
+root
+密码
+sudo passwd root
+输入新密码
+
+
+修改mysql密码 打开putty输入ip进入界面
+root 
+密码
+mysql -u root -p
+输入mysql密码
+use mysql;
+update user set password=password('123456') where user='root';
+然后重启service mysqld restart;
+
+
+忘记mysql密码
+修改MySQL的配置文件（默认为/etc/my.cnf）,在[mysqld]下添加一行skip-grant-tables
+root
+密码
+mysql -u root -p回车不用输入密码进入数据库
+mysql -u root -p
+输入mysql密码
+use mysql;
+update user set password=password('123456') where user='root';
+然后重启service mysqld restart;

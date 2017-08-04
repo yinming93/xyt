@@ -1,0 +1,33 @@
+微信开发人员，先打开http://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index关注测试帐号，获得APPID和APPsecret
+然后进行服务器接口配置，分别填入URL：http://xyt.xy-tang.com/2015/yinming/yhwhy/auto2.php，设置自己想写的Token。提交即可配置成功
+
+第一步，【例子是auto和auto2都一样】我们先来学会调用里面的一些属性，
+首先下载好官网的demo,然后打开修改Token，在demo中的类中，有一个responseMsg();方法，调用之
+注意XML部分，那是返回回复部分，例子以一个图文广告为例，详情看代码里面的属性值
+然后进行一个关键字小判断，可根据用户输入的内容返回指定内容，如输入“新闻”，则返回一个图文广告
+
+
+第二部，自定义菜单的初步制作
+1、打开下面的GET网址，将其中的APPID和APPSECRET，替换成自己的，会获得access_token
+https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+
+
+2、再打开下面的POST网址，将其中的ACCESS_TOKEN用上面一步获得的值替换之
+https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+
+3、开始新建一个php文件，随便命名。例子caidan.php
+$sql=第1步里面获得的最终URL
+$str=file_get_contents($sql);
+$back=json_decode($str,1);     //获得一个数组形式
+$urlcon="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$back['access_token'];     //前半部分是POST那里的就改了Token
+
+4、定义一个$data变量，里面写上菜单，例子看caidan.php里面的内容
+
+5、最后加上模拟提交代码
+	$ch = curl_init($urlcon);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Content-Length:'.strlen($data)));
+	$data =curl_exec($ch);
+	print_r($data);

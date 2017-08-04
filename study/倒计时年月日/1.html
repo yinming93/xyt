@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>h5</title>
+</head>
+<body>
+从前你是个傻逼，现在依然还是傻逼，只是<mark>变本加厉</mark>了
+下载刘傻逼包：
+
+<hr><hr>
+
+<progress value="2" max="100"></progress><br>
+剩余下载时间：
+<div class="time">
+        <span id="t_d">00天</span>
+        <span id="t_h">00时</span>
+        <span id="t_m">00分</span>
+        <span id="t_s">00秒</span>
+    </div>
+<script>
+   function GetRTime(){
+       var EndTime= new Date('2016/02/08 00:00:00');
+       var NowTime = new Date();
+       var t =EndTime.getTime() - NowTime.getTime();
+       var d=Math.floor(t/1000/60/60/24);
+       var h=Math.floor(t/1000/60/60%24);
+       var m=Math.floor(t/1000/60%60);
+       var s=Math.floor(t/1000%60);
+
+       document.getElementById("t_d").innerHTML = d + "天";
+       document.getElementById("t_h").innerHTML = h + "时";
+       document.getElementById("t_m").innerHTML = m + "分";
+       document.getElementById("t_s").innerHTML = s + "秒";
+   }
+   setInterval(GetRTime,0);
+</script>
+
+
+<div id="box">
+		0
+</div>
+<script>
+	var box = document.getElementById('box');
+	var timer = setInterval("run();", 100);
+		
+		function run(){
+			box.innerHTML = Number(box.innerHTML) + 1;
+		}
+</script>
+</body>
+</html>
