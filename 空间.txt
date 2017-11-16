@@ -1,0 +1,173 @@
+您现在就可以通过三级域名：http://xytang.l97a.bolead.com访问; 
+FTP IP为： 61.129.102.97
+用户名:xytang
+密 码:Xytang2
+ftp://xytang:Wsrf2001@61.129.102.97/
+http://ecd.tencent.com/css3/tools.html
+
+数据库
+
+http://mysqlmanage97.bolead.com/
+
+xytang
+wsrf2001
+
+
+阿里云服务器1（win2003/asp）
+
+114.215.183.41
+xinyutang2014
+xytang2014
+
+
+
+阿里云服务器2（centos/php）
+
+121.199.4.117
+root
+服务器  数据库密码都是ymbb1027Ca$$w0rd
+
+
+FTP:
+account:www
+password:589569125
+
+MySQL:
+account:root
+服务器  数据库密码都是ymbb1027Ca$$w0rd
+
+
+/alidata/www/default/2015/yinming
+
+
+http://xyt.xy-tang.com/2015/yinming/yhwybyb22
+
+
+
+我的微信公众号
+URL  http://xyt.xy-tang.com/2015/yinming/interface.php
+Token  yinming
+EncodingAESkey   r4VHs01fDElTyQIo9PSHMUHWJQs8R69TWy9VF5WDQhN
+
+http://menuadmin.xy-tang.com/
+13771832182
+
+
+http://dctt.xy-tang.com/e/admin-gouso/
+yinming   ym123456
+ 
+
+【易启秀】
+前台地址：http://szxytang.com/
+后台地址：http://szxytang.com/adminc.php
+
+默认后台账号密码都是adminc@qq.com  admin
+admin123@qq.com      admin123
+
+
+
+iH5帐号
+447850487@qq.com
+920419
+
+fqd_1988@163.com
+9264986
+
+凡科互动
+
+caomoo
+9264986
+
+开发云
+http://login.bce.baidu.com/
+13506132349
+wangkaisd123
+
+游戏链接：
+http://szxytang.com/2014/xyt2015724/game/
+邀请函链接：
+http://szxytang.com/2014/xyt2015724/yqh/
+360链接：
+http://szxytang.com/2014/xyt2015724/360/
+翻页链接：
+http://szxytang.com/2014/xyt2015724/fy/
+微楼书链接：
+http://szxytang.com/2014/xyt2015724/wls/
+内容展示
+http://szxytang.com/2015n/xytmodelfile/display/
+下载游戏展示
+http://szxytang.com/2015n/xytmodelfile/game/
+其它展示
+http://szxytang.com/2015n/xytmodelfile/other/
+
+
+数据库下载http://szxytang.com/2015n/yinming/ymgame/sql/
+
+广告 <a href="http://xyt.xy-tang.com/2015n/hejunObj/xyt/?from=groupmessage&isappinstalled=0"><p style="width:30%;position: absolute; top:97%;left:35%;z-index:2000; color:black;text-align:center;">信玉堂技术支持</p></a>
+
+
+
+
+
+我自己的服务器
+121.42.75.218
+
+FTP:
+qxu1098380099
+YINMING192583
+
+Mysql:
+qdm107081499.my3w.com
+qdm107081499
+YINMING192583
+
+百度统计帐号
+wangkai1350512
+wangkaisd
+
+
+<!--百度统计代码-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d949d76d44a0717b8fa4a2dd7cbe2461";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+	//防止下拉页面，查看域名
+$(document).ready(function(){
+	function stopScrolling( touchEvent ){
+		touchEvent.preventDefault();
+	}
+	document.addEventListener( 'touchstart' , stopScrolling , false );
+	document.addEventListener( 'touchmove' , stopScrolling , false );
+
+}); 
+</script>
+
+助力
+http://127.0.0.1:7002/active/xinyutang?ename=zhuli_snlh_0418_rank&openid=oINOHjgODv0R1bGWW_rthUxTM530&touserid=5572cb65680eb6db2e2ab2ae
+
+putty
+IP：121.199.41.177
+密码：8c501bc9
+
+
+百度统计
+http://tongji.baidu.com/web/welcome/login
+
+wangkai1350512
+
+wangkaisd
+
+
+谷分宝
+ArVEP5DjWF3QFeEHFhqwJ283NrTvHDVgDvndXjJPuE3o
+
+
+
+http://3gimg.qq.com/lightmap/v1/wxmarker/index.html?marker=coord:31.645193,120.29134;title:%E9%98%B3%E5%85%89100%E5%94%AE%E6%A5%BC%E5%A4%84;addr:%E9%98%B3%E5%85%89100%E5%94%AE%E6%A5%BC%E5%A4%84&referer=wexinmp_profile
