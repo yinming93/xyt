@@ -111,15 +111,16 @@ http://szxytang.com/2015n/xytmodelfile/other/
 
 我自己的服务器
 121.42.75.218
+qxu1098380099.my3w.com
 
 FTP:
 qxu1098380099
-YINMING192583
+yinming35272
 
 Mysql:
-qdm107081499.my3w.com
-qdm107081499
-YINMING192583
+qdm109009354.my3w.com
+qdm109009354
+yinming35272
 
 百度统计帐号
 wangkai1350512
@@ -165,8 +166,6 @@ wangkai1350512
 wangkaisd
 
 
-谷分宝
-ArVEP5DjWF3QFeEHFhqwJ283NrTvHDVgDvndXjJPuE3o
 
 
 
