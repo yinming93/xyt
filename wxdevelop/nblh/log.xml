@@ -1,0 +1,55 @@
+16:10:03接收消息：
+<xml><ToUserName><![CDATA[gh_fd95f5b5c0f0]]></ToUserName>
+<FromUserName><![CDATA[opaVrxLBJsmCp9kzzYOpg1QXnANU]]></FromUserName>
+<CreateTime>1498723803</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+16:10:03接收消息,'.event.'：
+<xml><ToUserName><![CDATA[gh_fd95f5b5c0f0]]></ToUserName>
+<FromUserName><![CDATA[opaVrxLBJsmCp9kzzYOpg1QXnANU]]></FromUserName>
+<CreateTime>1498723803</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+16:10:03回复消息,类型是'.event.'：
+ <xml>
+						<ToUserName><![CDATA[opaVrxLBJsmCp9kzzYOpg1QXnANU]]></ToUserName>
+						<FromUserName><![CDATA[gh_fd95f5b5c0f0]]></FromUserName>
+						<CreateTime>1498723803</CreateTime>
+						<MsgType><![CDATA[text]]></MsgType>
+						<Content><![CDATA[hi，这是一个苏州地铁出行神器！附近地铁站、在线购票、新鲜资讯、地铁规划、周边吃喝玩乐……这里都有！
+
+地铁君墙裂推荐↓↓↓
+ ➀ 苏州吃喝玩乐购，关注→<a href='http://t.cn/RcnGT7h'>苏州生活指南</a>
+ ➁ 亲子活动精选，10000+个家庭首选！关注→ <a href='http://t.cn/RXYHFJ6'>企鹅亲子</a>
+ ]]></Content>
+						</xml>
+16:10:34接收消息：
+<xml><ToUserName><![CDATA[gh_fd95f5b5c0f0]]></ToUserName>
+<FromUserName><![CDATA[opaVrxBg46w8chCNOvLDDZrmwgJM]]></FromUserName>
+<CreateTime>1498723834</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://mp.weixin.qq.com/s/nJ4onCun9Q8hBbNUQr1qkg]]></EventKey>
+<MenuId>462210720</MenuId>
+</xml>
+16:10:34接收消息,'.event.'：
+<xml><ToUserName><![CDATA[gh_fd95f5b5c0f0]]></ToUserName>
+<FromUserName><![CDATA[opaVrxBg46w8chCNOvLDDZrmwgJM]]></FromUserName>
+<CreateTime>1498723834</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://mp.weixin.qq.com/s/nJ4onCun9Q8hBbNUQr1qkg]]></EventKey>
+<MenuId>462210720</MenuId>
+</xml>
+16:10:34回复消息,类型是'.event.'：
+ <xml>
+						<ToUserName><![CDATA[opaVrxBg46w8chCNOvLDDZrmwgJM]]></ToUserName>
+						<FromUserName><![CDATA[gh_fd95f5b5c0f0]]></FromUserName>
+						<CreateTime>1498723834</CreateTime>
+						<MsgType><![CDATA[text]]></MsgType>
+						<Content><![CDATA[跳转链接 http://mp.weixin.qq.com/s/nJ4onCun9Q8hBbNUQr1qkg]]></Content>
+						</xml>

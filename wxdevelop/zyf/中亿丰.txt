@@ -1,0 +1,8 @@
+wxe72e1d660fdaccc2
+
+1a7586b33fa40f954fe072deadd93c59
+
+// $content = array();
+					$content[] = array("Title"=>"好！欢迎来到中亿丰CLUB，这里有你所不了解的中亿丰故事", "Description"=>"", "PicUrl"=>"http://xyt.xy-tang.com/developer/zyf/img/0.jpg", "Url" =>"http://mp.weixin.qq.com/s?__biz=MjM5NjAzNTQwNQ==&mid=2663042157&idx=1&sn=cf366d558f00b9585ff87665f806b012&chksm=bda1024f8ad68b593644d361b424656794533c3f10c0a9b74ee7e054b93c1293c84b5cf1bccd&mpshare=1&scene=1&srcid=0807F6oPI12s8HkGTo42LSxL#rd");
+					// $content[] = array("Title"=>"这里有城市建设发展趋势和潮流的管廊建设", "Description"=>"", "PicUrl"=>"http://xyt.xy-tang.com/developer/yhwhy/img/619.jpg", "Url" =>"http://mp.weixin.qq.com/s?__biz=MjM5NjAzNTQwNQ==&mid=2663041991&idx=1&sn=ff26cfe79f1f77bc21a4ee943c6551ff&chksm=bda105e58ad68cf30782eda561069fc08bd4cebbd095ea4f26693f7919ab9531ea4ed3bc4830&mpshare=1&scene=1&srcid=0807U6rK8TxY81yZrINDOWVn#rd");
+					break;
