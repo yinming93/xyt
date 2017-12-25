@@ -1,0 +1,53 @@
+/**{
+	margin: 0;padding: 0;
+	cursor: pointer;
+}*/
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.div{
+	width: 100%;
+	min-height:100%;
+	position: relative;
+	/*overflow: hidden;*/
+}
+.bg_1{
+	background: url(http://xinyutang.bj.bcebos.com/1712%2Fbg_redrain.jpg) no-repeat;
+	background-size: cover;
+}
+.bg_2{
+	background: url(http://xinyutang.bj.bcebos.com/1712%2Fbg_redrain.jpg) no-repeat;
+	background-size: cover;
+	
+}
+.div > div{
+	width: 80px;
+	height: 90px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	/*background: red;*/
+	/*background: url(../images/test_package.png) no-repeat;
+	background-size: 100%;*/
+	background-image: url(http://xinyutang.bj.bcebos.com/hongbao/greencity/icon_package.png);
+	background-repeat: no-repeat;
+	background-size: 155px 215px;
+	background-position: 0px -1px;
+	/*background-position: 0px -100px;*/
+	
+	
+	/*z-index: 999999;*/
+	
+}
+/*.div > div > div{
+	width: 60px;
+	height: 80px;
+	
+	background: url(../images/test_package.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top: -2px;
+	right: -2px;
+}*/
