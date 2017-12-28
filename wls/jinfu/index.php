@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>WEHUB</title>
+    <title>WEHUB一体机微官网</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     <!-- Link Swiper's CSS -->
@@ -19,32 +19,16 @@
 </head>
 <body>
     <header><img src="img/top.jpg" alt=""></header>
-    <!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="img/l1.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="img/l2.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="img/l3.jpg" alt=""></div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Pagination -->
-        <!-- <div class="swiper-button-next"></div> -->
-        <!-- <div class="swiper-button-prev"></div> -->
-    </div>
+    
     <!-- 商品板块 -->
-    <div class="goods gx">
-        <a href="desc.php?title=WEHUB-功能特点&img=1"><img src="img/d1.jpg" alt=""></a>
-        <a href="desc.php?title=WEHUB-基础版&img=2"><img src="img/d2.jpg" alt=""></a>
-    </div>
-    <div class="goods">
-        <a href="desc.php?title=WEHUB-专业版&img=3"><img src="img/d3.jpg" alt=""></a>
-    </div>
-    <div class="goods">
-        <a href="desc.php?title=WEHUB-产品分类&img=4"><img src="img/d4.jpg" alt=""></a>
-    </div>
-    <div class="goods">
-        <a href="desc.php?title=WEHUB-应用场景&img=5"><img src="img/d5.jpg" alt=""></a>
+    <div class="main">
+        <a href="#"><img src="img/index/1.jpg" alt=""></a>
+ 
+        <a href="pdesc.php?title=WEHUB场景应用&img=5"><img src="img/index/2.jpg" alt=""></a>
+
+        <a href="projects.php"><img src="img/index/3.jpg" alt=""></a>
+
+        <a href="#"><img src="img/index/4.jpg" alt=""></a>
     </div>
     
 
@@ -52,12 +36,12 @@
     <footer>
         <div class="line">
             <p>客服热线</p>
-            <h3>400-88888888</h3>
-            <a href="tel:40088888888">联系在线客服</a>
+            <h3>0512-62820000</h3>
+            <a href="tel:051262820000">联系在线客服</a>
         </div>
         
         <div class="copyright">
-            <p>Copyright@2017 苏州信玉堂营销策划有限公司</p>
+            <p>Copyright@2017 锦富技术</p>
         </div>
     </footer>
     <!-- Swiper JS -->
@@ -91,10 +75,10 @@ wx.config({
       });
      wx.ready(function () {
     var shareinfo={
-         title: 'WEHUB',
-          desc: 'WEHUB',
+         title: 'WEHUB一体机微官网',
+          desc: '改变传统会议模式 一切都是为了更高效的会议',
           link: 'http://xytang88.com/yin/wls/jinfu',
-          imgUrl: 'http://xytang88.com/yin/wls/jinfu/share.jpg'}
+          imgUrl: 'http://xytang88.com/yin/wls/jinfu/share1.jpg'}
           wx.onMenuShareTimeline(shareinfo);
      wx.onMenuShareAppMessage(shareinfo);
       });

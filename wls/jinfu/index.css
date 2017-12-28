@@ -1,3 +1,4 @@
+ /*公共样式*/
  body {
         background: #eee;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -6,21 +7,6 @@
         margin: 0;
         padding: 0;
     }
-    .swiper-container {
-        width: 100%;
-        height: auto;
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        /*background: #fff;*/
-
-    }
-    .swiper-container .swiper-slide img{
-        width: 100%;
-        margin-top:66px; 
-    }
-
     header{
         width: 100%;
         position: fixed;
@@ -30,26 +16,10 @@
     }
     header img{
         width: 100%;
-        height: 66px;
+        height: 75px;
         display: block;
     }
-    .goods{
-        width: 100%;
-        height: auto;
-        margin-top: 5px;
-        float: left;
-    }
-    .goods a img{
-        width: 100%;
-        display: block;
-    }
-    .gx a img{
-        width: 49.2%;
-        float: left;
-    }
-    .gx a:nth-child(2) img{
-        margin-left: 1.6%;
-    }
+
     footer{
         width: 100%;
         height: 256px;
@@ -86,10 +56,53 @@
         text-align: center;
     }
 
+    /*首页样式开始*/
+    .main a img{
+        width: 100%;
+        display: block;
+    }
+    .main a:nth-child(1) img{
+        margin-top: 75px;
+    }
+    /*首页样式结束*/
 
+    /*产品样式开始*/
+    .swiper-container {
+        width: 100%;
+        height: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        /*background: #fff;*/
+
+    }
+    .swiper-container .swiper-slide img{
+        width: 100%;
+        margin-top:75px; 
+    }
+    .goods{
+        width: 100%;
+        height: auto;
+        margin-top: 5px;
+        float: left;
+    }
+    .goods a img{
+        width: 100%;
+        display: block;
+    }
+    .gx a img{
+        width: 49.2%;
+        float: left;
+    }
+    .gx a:nth-child(2) img{
+        margin-left: 1.6%;
+    }
     .desc{
-        margin-top:66px;
+        margin-top:75px;
     }
     .desc img{
         width: 100%;
     }
+    /*产品样式结束*/
+
