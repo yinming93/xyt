@@ -18,7 +18,7 @@
 
 </head>
 <body>
-    <header><img src="img/top.jpg" alt=""></header>
+    <header><a href="index.php"><img src="img/top.jpg" alt=""></a></header>
     
     <!-- 商品板块 -->
     <div class="main">
