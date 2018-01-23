@@ -1,4 +1,4 @@
-修改服务器密码 打开putty输入ip进入界面
+﻿修改服务器密码 打开putty输入ip进入界面
 root
 密码
 sudo passwd root
@@ -25,3 +25,20 @@ mysql -u root -p
 use mysql;
 update user set password=password('123456') where user='root';
 然后重启service mysqld restart;
+
+
+
+
+我自己的修改mysql
+mysql -uroot -h127.0.0.1 -p
+改完后
+flush privileges;
+
+
+服务器mysql外链配置
+第一  服务器的防火墙要打开  然后配置3306端口对外开放
+第二  数据要设置外面可以连进来#将host设置为%表示任何ip都能连接mysql，当然也可以将host设置为指定ip
+      update user set host='%' where user='root' and host='localhost';
+      flush privileges;#刷新权限表
+
+第三  配置阿里云控制台安全组规则
