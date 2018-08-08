@@ -1,32 +1,14 @@
-您现在就可以通过三级域名：http://xytang.l97a.bolead.com访问; 
-FTP IP为： 61.129.102.97
-用户名:xytang
-密 码:Xytang2
-ftp://xytang:Wsrf2001@61.129.102.97/
-http://ecd.tencent.com/css3/tools.html
-
-数据库
-
-http://mysqlmanage97.bolead.com/
-
-xytang
-wsrf2001
-
+【信玉堂服务器】
 
 阿里云服务器1（win2003/asp）
-
 114.215.183.41
 xinyutang2014
 xytang2014
 
-
-
 阿里云服务器2（centos/php）
-
 121.199.4.117
 root
 服务器  数据库密码都是ymbb1027Ca$$w0rd
-
 
 FTP:
 account:www
@@ -36,52 +18,139 @@ MySQL:
 account:root
 服务器  数据库密码都是ymbb1027Ca$$w0rd
 
+============================================================================================================================================================
 
-/alidata/www/default/2015/yinming
-
-
-http://xyt.xy-tang.com/2015/yinming/yhwybyb22
-
-
-
-我的微信公众号
-URL  http://xyt.xy-tang.com/2015/yinming/interface.php
-Token  yinming
-EncodingAESkey   r4VHs01fDElTyQIo9PSHMUHWJQs8R69TWy9VF5WDQhN
-
+【助力后台】
 http://menuadmin.xy-tang.com/
 13771832182
 
+【助力本地环境】
+http://127.0.0.1:7002/active/xinyutang?ename=zhuli_snlh_0418_rank&openid=oINOHjgODv0R1bGWW_rthUxTM530&touserid=5572cb65680eb6db2e2ab2ae
 
-http://dctt.xy-tang.com/e/admin-gouso/
-yinming   ym123456
- 
+putty
+IP：121.199.41.177
+密码：8c501bc9
+cd /mnt/nodejs/wapp3/
+git pull
 
-【易启秀】
-前台地址：http://szxytang.com/
-后台地址：http://szxytang.com/adminc.php
+远程连接密码832182
+按s跳过后继续以下命令
 
-默认后台账号密码都是adminc@qq.com  admin
-admin123@qq.com      admin123
+重启服务
+ps -ef|grep nginx 
+ps -ef|grep mongodb
+pm2 list
+pm2 kill
+cd/mnt/nodejs/wapp3
+pm2 start applist.json
+pm2 list
 
 
+【信玉堂阿里云服务器账号】
+阿里云账号：
+leoxgc@163.com
+xgc54271286
 
-iH5帐号
+============================================================================================================================================================
+
+【iH5帐号】
 447850487@qq.com
-920419
+hejuntc009
 
 fqd_1988@163.com
+yinming
+
+何俊
+13862169577
+
 9264986
 
-凡科互动
-
+【凡科互动】
 caomoo
-9264986
 
-开发云
-http://login.bce.baidu.com/
-13506132349
-wangkaisd123
+fqd9264986
+
+【信鸽科技服务号】
+
+szxingekeji
+
+
+公众平台
+2826069710@qq.com   
+zzz123456
+
+AppID(应用ID)
+wx461b5105da7629f1
+
+
+AppSecret(应用密钥)0d3b50976e4f15baff7cc8dadd661373
+
+微信支付商户号
+1237631502
+
+
+商户平台登录帐号
+1237631502@1237631502
+
+
+
+商户平台登录密码
+	
+654486
+
+公众号APPID
+	
+wx461b5105da7629f1
+
+
+设置API密钥	
+pSXWZEVIVBMpeaPtC7q9hEUSXmQGE8KK
+
+AppID(应用ID)
+wx461b5105da7629f1
+
+AppSecret(应用密钥)
+0d3b50976e4f15baff7cc8dadd661373
+	
+【草帽互动服务号】
+wx9a81c485f49bfea9
+902acf6f2a4e51a20f4e54554b252bb2
+IP白名单地址：114.55.99.41
+
+草帽服务号
+
+账号：3480500259@qq.com
+
+密码：caomao123
+
+
+
+
+微信支付商户号
+
+
+1397902902
+
+
+
+商户平台登录帐号
+
+1397902902@1397902902
+
+
+
+商户平台登录密码
+
+603959
+商户平台登录帐号
+1483377322@1483377322
+
+商户平台登录密码
+557248
+
+100万 商户平台操作密码caomao_123
+
+============================================================================================================================================================
 
 游戏链接：
 http://szxytang.com/2014/xyt2015724/game/
@@ -106,10 +175,7 @@ http://szxytang.com/2015n/xytmodelfile/other/
 广告 <a href="http://xyt.xy-tang.com/2015n/hejunObj/xyt/?from=groupmessage&isappinstalled=0"><p style="width:30%;position: absolute; top:97%;left:35%;z-index:2000; color:black;text-align:center;">信玉堂技术支持</p></a>
 
 
-
-
-
-我自己的服务器
+【我自己的服务器】
 121.42.75.218
 qxu1098380099.my3w.com
 
@@ -122,51 +188,86 @@ qdm109009354.my3w.com
 qdm109009354
 yinming35272
 
-百度统计帐号
-wangkai1350512
-wangkaisd
+我的百度统计
+yinming321
+YINming123
 
-
-<!--百度统计代码-->
+<!--百度统计代码xyt88-->
 <script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d949d76d44a0717b8fa4a2dd7cbe2461";
+  hm.src = "https://hm.baidu.com/hm.js?9eedcbbe10fbc3c420e014e742ff1eba";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
 
-<script>
-	//防止下拉页面，查看域名
-$(document).ready(function(){
-	function stopScrolling( touchEvent ){
-		touchEvent.preventDefault();
-	}
-	document.addEventListener( 'touchstart' , stopScrolling , false );
-	document.addEventListener( 'touchmove' , stopScrolling , false );
 
-}); 
+<!--孟尝域名统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ddc56bd67e09ff74a6d607913cc5305b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
-助力
-http://127.0.0.1:7002/active/xinyutang?ename=zhuli_snlh_0418_rank&openid=oINOHjgODv0R1bGWW_rthUxTM530&touserid=5572cb65680eb6db2e2ab2ae
 
-putty
-IP：121.199.41.177
-密码：8c501bc9
-
-
-百度统计
-http://tongji.baidu.com/web/welcome/login
-
-wangkai1350512
-
-wangkaisd
-
-
-
-
+地图
 
 http://3gimg.qq.com/lightmap/v1/wxmarker/index.html?marker=coord:31.645193,120.29134;title:%E9%98%B3%E5%85%89100%E5%94%AE%E6%A5%BC%E5%A4%84;addr:%E9%98%B3%E5%85%89100%E5%94%AE%E6%A5%BC%E5%A4%84&referer=wexinmp_profile
+
+https://map.qq.com/nav/drive#routes/page?transport=2&epointy=30.915340&epointx=121.489300&eword=%E7%A2%A7%E6%A1%82%E5%9B%AD%C2%B7%E5%87%A4%E9%B8%A3%E7%BE%8E%E8%B0%B7&cond=0&from=&fromcoord=&referer=myapp&key=TKUBZ-D24AF-GJ4JY-JDVM2-IBYKK-KEBCU&ch=uri-api
+
+============================================================================================================================================================
+【孟尝服务号】
+454410487@qq.com
+mengchangchuanbo123
+
+ih5平台授权网页授权域名
+stat.aiwall.com
+
+APPappid
+wx863e78b1aaf4d6f4
+
+APPsecret
+2791e35605a17a601eacdcdd83dcd0fd
+
+商户平台账号
+1497321542@1497321542
+mengchangchuanbo123
+
+934162347@1497321542
+mengchangchuanbo123
+
+商户平台操作密码
+MengChang@1027
+
+商户平台支付API密钥：MengChang10271027102710271027102
+
+===============================================================
+【孟尝域名】
+http://ym.2dreamchaser.com
+
+【孟尝服务器】
+公网IP
+47.98.42.19
+私有IP
+172.16.251.55
+FTP连接密码
+MengChang@1027..
+
+数据库密码
+MengChang@1027!
+
+远程连接密码： 106895
+
+===============================================================
+
+我的微信公众号
+URL  http://xyt.xy-tang.com/2015/yinming/interface.php
+Token  yinming
+EncodingAESkey   r4VHs01fDElTyQIo9PSHMUHWJQs8R69TWy9VF5WDQhN
